@@ -154,7 +154,7 @@ function Hero({ t, audioOn, toggleAudio }) {
         <div className="scroll-label">{t.hero.scroll}</div>
       </div>
       <div className={`audio-control ${audioOn ? "on" : ""}`}>
-        <span className="mono audio-label">{t.hero.ambient} · {audioOn ? "ON" : "OFF"}</span>
+        <span className="mono audio-label">{audioOn ? `${t.hero.ambient} · ON` : t.hero.ambientOff}</span>
         <button className={`audio-btn ${audioOn ? "on" : ""}`} onClick={toggleAudio} aria-label="Toggle ambient audio">
           <div className="audio-bars">
             <span></span><span></span><span></span><span></span>
@@ -419,17 +419,16 @@ function Portafolio({ t }) {
         {t.port.items.map((p, i) => {
           const M = mocks[i];
           return (
-            <a className={`port-card reveal delay-${i + 1}`} href="#cta" key={i}>
+            <div className={`port-card reveal delay-${i + 1}`} key={i}>
               <div className="port-mockup">
                 <M name={p.name} />
-                <div className="port-overlay"><span>{t.port.hoverCta}</span></div>
               </div>
               <div className="port-meta">
                 <span className="port-cat">{p.cat}</span>
                 <h3>{p.name}<span className="dot">.</span></h3>
                 <p>{p.type}</p>
               </div>
-            </a>
+            </div>
           );
         })}
       </div>

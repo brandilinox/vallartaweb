@@ -366,6 +366,16 @@ section {
 }
 .audio-control .audio-btn:hover { border-color: var(--coral); }
 .audio-control .audio-btn.on { border-color: var(--coral); }
+/* Llama la atencion mientras el sonido esta apagado: pulso coral + label resaltada */
+.audio-control:not(.on) .audio-btn {
+  border-color: var(--coral);
+  animation: audioPulse 2.2s ease-in-out infinite;
+}
+.audio-control:not(.on) .audio-label { color: var(--coral); }
+@keyframes audioPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.5); }
+  50% { box-shadow: 0 0 0 9px rgba(255,107,53,0); }
+}
 .audio-control .audio-bars { display: flex; gap: 2px; align-items: end; height: 14px; }
 .audio-control .audio-bars span {
   width: 2px; background: var(--gold);
@@ -687,7 +697,7 @@ section {
   border: 1px solid var(--line);
   background: var(--panel);
   display: flex; flex-direction: column;
-  cursor: pointer;
+  cursor: default;
   transition: transform 0.6s var(--ease), border-color 0.4s var(--ease);
 }
 .port-card:hover { border-color: var(--coral); }

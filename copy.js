@@ -17,6 +17,7 @@ window.COPY = {
       ctaSec: "Ver trabajos →",
       scroll: "DESPLAZA",
       ambient: "AMBIENT",
+      ambientOff: "🔊 ACTIVAR SONIDO",
     },
     mani: {
       label: "02 / MANIFIESTO",
@@ -111,6 +112,7 @@ window.COPY = {
       ctaSec: "See our work →",
       scroll: "SCROLL",
       ambient: "AMBIENT",
+      ambientOff: "🔊 ENABLE SOUND",
     },
     mani: {
       label: "02 / MANIFESTO",
