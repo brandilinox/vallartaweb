@@ -686,6 +686,9 @@ section {
   margin: 0 auto;
 }
 .port-grid .port-card:nth-child(1) { grid-row: span 2; }
+/* Con 2 casos reales: dos columnas iguales, sin hueco */
+.port-grid.is-two { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+.port-grid.is-two .port-card:nth-child(1) { grid-row: auto; }
 @media (max-width: 1000px) {
   .port-grid { grid-template-columns: 1fr; }
   .port-grid .port-card:nth-child(1) { grid-row: auto; }

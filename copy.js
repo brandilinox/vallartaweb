@@ -65,12 +65,11 @@ window.COPY = {
     },
     port: {
       label: "05 / TRABAJO SELECCIONADO",
-      title: "Cada proyecto, un universo.",
+      title: "Un cliente real. Todos los días.",
       hoverCta: "VER PROYECTO →",
       items: [
-        { cat: "HOTEL BOUTIQUE · SAYULITA",       name: "Casa Marlen",     type: "Página web completa + sistema de reservas" },
-        { cat: "RESTAURANTE · ZONA ROMÁNTICA",    name: "Olvera",          type: "Landing + menú interactivo" },
-        { cat: "CLÍNICA ESTÉTICA · P. VALLARTA",  name: "Clínica Aurora",  type: "Landing + bot WhatsApp de agendamiento" },
+        { cat: "SALÓN DE BELLEZA · PUERTO VALLARTA", name: "Lakrop",  type: "Punto de venta, inventario y comisiones dentro de Telegram · 5 estilistas, uso diario" },
+        { cat: "PRODUCTO PROPIO · SaaS",              name: "Vendi",   type: "El software del caso de arriba, ahora para cualquier negocio chico" },
       ],
     },
     cta: {
@@ -160,12 +159,11 @@ window.COPY = {
     },
     port: {
       label: "05 / SELECTED WORK",
-      title: "Every project, a universe.",
+      title: "One real client. Every single day.",
       hoverCta: "VIEW PROJECT →",
       items: [
-        { cat: "BOUTIQUE HOTEL · SAYULITA",       name: "Casa Marlen",     type: "Full website + reservation system" },
-        { cat: "RESTAURANT · ZONA ROMÁNTICA",     name: "Olvera",          type: "Landing + interactive menu" },
-        { cat: "AESTHETIC CLINIC · P. VALLARTA",  name: "Clínica Aurora",  type: "Landing + WhatsApp booking bot" },
+        { cat: "HAIR SALON · PUERTO VALLARTA",    name: "Lakrop",  type: "Point of sale, inventory and commissions inside Telegram · 5 stylists, daily use" },
+        { cat: "OWN PRODUCT · SaaS",              name: "Vendi",   type: "The software above, now for any small business" },
       ],
     },
     cta: {

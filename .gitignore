@@ -7,3 +7,11 @@ node_modules/
 Thumbs.db
 .idea/
 .vscode/
+
+# Documentos internos de la empresa — NUNCA se publican
+EMPRESA.md
+
+# Documento interno de contexto
+CLAUDE.md
+
+.claude/

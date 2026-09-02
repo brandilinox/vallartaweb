@@ -360,47 +360,31 @@ function Proceso({ t }) {
 // PORTAFOLIO — with hand-built scaffolded mockup placeholders
 // ============================================================
 
-function HotelMockup({ name }) {
-  return (
-    <div className="frame laptop">
-      <div className="frame-screen scaffold-hotel">
-        <div className="h-nav">
-          <span>{name.toLowerCase()}<span className="dot">.</span></span>
-          <div className="h-dots"><span>STAY</span><span>DINE</span><span>BOOK</span></div>
-        </div>
-        <div className="h-headline">Where the Pacific exhales.</div>
-        <div className="h-meta"><span>SAYULITA</span><span>EST · 2019</span><span>9 SUITES</span></div>
-        <button className="h-cta">RESERVAR &nbsp;→</button>
-      </div>
-    </div>
-  );
-}
-
-function RestMockup({ name }) {
-  return (
-    <div className="frame tablet">
-      <div className="frame-screen scaffold-rest">
-        <div className="r-top">{name}</div>
-        <div className="r-img">[ PLATO · B&amp;W ]</div>
-        <div className="r-rows">
-          <div className="r-row"><span>Tiradito de hamachi</span><span>$320</span></div>
-          <div className="r-row"><span>Pulpo a las brasas</span><span>$480</span></div>
-          <div className="r-row"><span>Ribeye envejecido</span><span>$760</span></div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function BotMockup() {
+function VendiSalonMockup() {
   return (
     <div className="frame phone">
       <div className="frame-screen scaffold-bot">
-        <div className="b-head"><span className="b-avatar"></span><span>Aurora · WhatsApp</span></div>
-        <div className="b-msg bot">Hola 👋 Soy el asistente de Clínica Aurora. ¿En qué te puedo ayudar?</div>
-        <div className="b-msg me">Quisiera info de tratamientos faciales</div>
-        <div className="b-msg bot">¡Perfecto! Tenemos 3 protocolos. ¿Puedo agendarte una valoración?</div>
+        <div className="b-head"><span className="b-avatar"></span><span>Vendi · Telegram</span></div>
+        <div className="b-msg bot">Listo. ¿Qué vendiste?</div>
+        <div className="b-msg me">Alaciado japonés · Karla</div>
+        <div className="b-msg bot">Total $1,200 · comisión $480 calculada · stock actualizado ✅</div>
         <div className="b-input"><span>Escribe un mensaje…</span><span>↵</span></div>
+      </div>
+    </div>
+  );
+}
+
+function VendiCajaMockup() {
+  return (
+    <div className="frame tablet">
+      <div className="frame-screen scaffold-rest">
+        <div className="r-top">Cierre de caja</div>
+        <div className="r-img">[ CORTE DEL DÍA ]</div>
+        <div className="r-rows">
+          <div className="r-row"><span>Ventas del día</span><span>$8,450</span></div>
+          <div className="r-row"><span>Comisiones</span><span>$2,180</span></div>
+          <div className="r-row"><span>Efectivo en caja</span><span>$4,120</span></div>
+        </div>
       </div>
     </div>
   );
@@ -408,14 +392,14 @@ function BotMockup() {
 
 function Portafolio({ t }) {
   const ref = useReveal();
-  const mocks = [HotelMockup, RestMockup, BotMockup];
+  const mocks = [VendiSalonMockup, VendiCajaMockup];
   return (
     <section className="portafolio grain" id="portafolio" ref={ref}>
       <div className="port-head">
         <div className="section-label mono reveal">{t.port.label}</div>
         <h2 className="display section-title reveal delay-1">{t.port.title}</h2>
       </div>
-      <div className="port-grid">
+      <div className={`port-grid${t.port.items.length === 2 ? " is-two" : ""}`}>
         {t.port.items.map((p, i) => {
           const M = mocks[i];
           return (
