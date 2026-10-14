@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barbería Nómada · Cortes y barba en Puerto Vallarta</title>
+<meta name="description" content="Barbería en Puerto Vallarta. Elige servicio, día y hora y agenda tu cita por WhatsApp en segundos. Precios claros y horarios a la vista.">
+<meta name="theme-color" content="#161513">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Barbería Nómada · agenda por WhatsApp">
+<meta property="og:description" content="Elige servicio, día y hora. Agenda tu cita por WhatsApp.">
+<meta property="og:locale" content="es_MX">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%88%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&display=swap">
+
+<!-- SEO LOCAL → Google Maps -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"HairSalon","name":"Barbería Nómada","priceRange":"$$","telephone":"+523224758995",
+  "address":{"@type":"PostalAddress","streetAddress":"Calle Lázaro Cárdenas 275","addressLocality":"Puerto Vallarta","addressRegion":"Jalisco","postalCode":"48380","addressCountry":"MX"},
+  "geo":{"@type":"GeoCoordinates","latitude":20.5996,"longitude":-105.2360},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"18:00"}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --ink:#161513;--ink-2:#221f1b;--deep:#0d0c0a;
+    --tan:#c99a5b;--tan-d:#b2823f;
+    --paper:#f6f2ea;--cream:#fffdf8;--txt:#201d18;--muted:#6f685d;
+    --line:rgba(22,21,19,.13);--shadow:0 18px 44px rgba(13,12,10,.2);--radius:18px;--wa:#25D366;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Space Grotesk",system-ui,sans-serif;color:var(--txt);background:var(--paper);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}a{color:inherit}
+  h1,h2,h3,.serif{font-family:"Bodoni Moda",Georgia,serif;font-weight:600;letter-spacing:.005em}
+  .wrap{width:min(1120px,92vw);margin-inline:auto}
+  body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;font-family:"Space Grotesk",sans-serif;
+    font-weight:600;font-size:1rem;text-decoration:none;padding:12px 20px;border-radius:12px;transition:transform .18s,box-shadow .18s,background .18s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-wa{background:var(--wa);color:#063d1c;box-shadow:0 8px 22px rgba(37,211,102,.4)}
+  .btn-tan{background:var(--tan);color:#201400;box-shadow:0 8px 22px rgba(201,154,91,.42)}
+  .btn-tan:hover{background:var(--tan-d)}
+  .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.4);backdrop-filter:blur(4px)}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+  header.site{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s}
+  .bar{display:flex;align-items:center;gap:14px;justify-content:space-between;padding:16px 0;transition:padding .3s}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Bodoni Moda",serif;font-size:1.3rem;color:#fff;text-decoration:none;transition:color .3s}
+  .brand .mark{width:34px;height:34px;flex:0 0 auto}
+  .nav{display:none;gap:24px;font-size:.95rem;font-weight:500}
+  .nav a{text-decoration:none;color:rgba(255,255,255,.88);transition:color .3s}
+  header.scrolled{background:rgba(22,21,19,.92);backdrop-filter:saturate(1.2) blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+  header.scrolled .bar{padding:10px 0}
+
+  .hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:#0d0c0a center/cover no-repeat;animation:kenburns 24s ease-out both}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(13,12,10,.95) 2%, rgba(13,12,10,.4) 46%, rgba(13,12,10,.6) 100%)}
+  @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero-inner{position:relative;z-index:2;padding:0 0 60px;width:min(1120px,92vw);margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--tan)}
+  h1{font-size:clamp(2.9rem,10vw,5.4rem);line-height:1.0;margin:.22em 0 .32em;color:#fff}
+  h1 em{font-style:italic;color:var(--tan)}
+  .hero .lede{font-size:clamp(1.05rem,2.6vw,1.26rem);color:rgba(255,255,255,.88);max-width:44ch;font-weight:400}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .glass-status{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;font-size:.92rem;font-weight:600;
+    background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);color:#fff;margin-bottom:22px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#bbb}
+  .glass-status.open .dot{background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
+  .glass-status.closed .dot{background:#fb7185;box-shadow:0 0 0 4px rgba(251,113,133,.25)}
+  .scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:1.4rem;animation:bob 2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}
+
+  main{position:relative;z-index:2}
+  section{padding:62px 0}
+  .kicker{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tan-d);font-weight:700}
+  h2{font-size:clamp(2rem,5.5vw,3rem);color:var(--ink);margin:.18em 0 .1em}
+  .sec-lede{color:var(--muted);max-width:52ch;margin:.3em 0 0}
+
+  .services{display:grid;gap:12px;margin-top:22px}
+  @media(min-width:640px){.services{grid-template-columns:1fr 1fr}}
+  .svc{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:transform .18s,box-shadow .18s}
+  .svc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .svc h3{margin:0;font-family:"Space Grotesk",sans-serif;font-size:1.1rem;font-weight:600;color:var(--ink)}
+  .svc p{margin:3px 0 0;color:var(--muted);font-size:.9rem}
+  .svc .price{font-family:"Bodoni Moda",serif;font-weight:600;color:var(--tan-d);font-size:1.25rem;white-space:nowrap}
+
+  .special{display:grid;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--deep)}
+  @media(min-width:760px){.special{grid-template-columns:1fr 1fr}}
+  .special .pic{min-height:260px;background:#0d0c0a center/cover no-repeat}
+  .special .txt{padding:36px 32px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+  .special .kicker{color:var(--tan)}
+  .special h3{font-size:clamp(1.8rem,4vw,2.4rem);margin:.15em 0 .3em;color:#fff}
+  .special p{color:#ddd7cd;max-width:46ch;margin:0 0 20px}
+
+  .gallery{display:flex;gap:14px;overflow-x:auto;padding:4px 0 14px;scroll-snap-type:x mandatory}
+  .gallery img{flex:0 0 auto;width:min(72vw,280px);height:330px;object-fit:cover;border-radius:16px;scroll-snap-align:start;box-shadow:0 8px 20px rgba(13,12,10,.2)}
+
+  /* Agendador */
+  .booking{background:var(--ink);color:#fff;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+  .booking h2{color:#fff}
+  .booking .step{margin:18px 0}
+  .booking .lbl{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);font-weight:700;margin-bottom:10px;display:block}
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{font-family:"Space Grotesk",sans-serif;font-size:.95rem;background:rgba(255,255,255,.07);color:#eee;border:1.5px solid rgba(255,255,255,.18);padding:10px 15px;border-radius:12px;cursor:pointer;transition:.14s}
+  .opt:hover{border-color:var(--tan)}
+  .opt[aria-pressed="true"]{background:var(--tan);color:#201400;border-color:var(--tan)}
+  .opt small{display:block;font-size:.72rem;opacity:.8}
+  .summary{margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.06);border-radius:12px;font-size:1rem;min-height:1em}
+  .summary b{color:var(--tan)}
+  .booking .send{margin-top:16px;width:100%;justify-content:center;font-size:1.06rem;padding:14px}
+  .booking .send[aria-disabled="true"]{opacity:.5;pointer-events:none}
+
+  .info{display:grid;gap:18px}
+  @media(min-width:760px){.info{grid-template-columns:1fr 1fr}}
+  .card{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 6px 18px rgba(13,12,10,.05)}
+  .hours{list-style:none;margin:14px 0 0;padding:0}
+  .hours li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .hours li:last-child{border-bottom:0}
+  .hours li.today{font-weight:700;color:var(--ink)}
+  .hours li.today::after{content:"hoy";font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tan-d);margin-left:8px}
+  .mini-status{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-weight:600;font-size:.92rem;background:#fff;border:1px solid var(--line);margin-top:10px}
+  .mini-status.open .dot{background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+  .mini-status.closed .dot{background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.18)}
+  .addr{font-size:1.05rem;color:var(--ink);margin:12px 0 18px}
+  .map-actions{display:flex;gap:10px;flex-wrap:wrap}.map-actions .btn{flex:1 1 auto;justify-content:center}
+  .mapbox{margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .mapbox button.loadmap{width:100%;border:0;background:#e6ddcd;color:var(--ink);font-family:inherit;font-weight:600;padding:42px 16px;cursor:pointer;font-size:1rem}
+  .mapbox iframe{width:100%;height:280px;border:0;display:block}
+
+  footer{position:relative;z-index:2;padding:46px 0 120px;color:var(--muted);font-size:.92rem;text-align:center;background:var(--paper)}
+  footer .demo{display:inline-block;margin-top:14px;font-size:.82rem;background:#e6ddcd;color:var(--ink-2);padding:8px 15px;border-radius:999px}
+
+  .fab{position:fixed;right:16px;bottom:16px;z-index:50}.fab svg{width:22px;height:22px}
+
+  @media(min-width:880px){.nav{display:flex}}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.hero-bg{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="site" id="hdr">
+  <div class="wrap bar">
+    <a class="brand" href="#">
+      <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#c99a5b"/><path d="M12 11l16 18M28 11L12 29" stroke="#161513" stroke-width="2.6" stroke-linecap="round"/><circle cx="12" cy="11" r="3" fill="#161513"/><circle cx="28" cy="11" r="3" fill="#161513"/></svg>
+      Barbería Nómada
+    </a>
+    <nav class="nav">
+      <a href="#servicios">Servicios</a><a href="#agendar">Agendar</a><a href="#galeria">Trabajos</a><a href="#llegar">Cómo llegar</a>
+    </nav>
+    <a class="btn btn-tan" href="#agendar">Agendar cita</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-inner">
+      <span class="glass-status" id="statusHero"><span class="dot"></span><span class="label">Revisando horario…</span></span>
+      <div>
+        <span class="eyebrow">💈 Barbería · Puerto Vallarta</span>
+        <h1>Tu mejor versión,<br>en <em>tres toques</em>.</h1>
+        <p class="lede">Elige servicio, día y hora. Te confirmamos por WhatsApp — sin llamadas, sin esperar en la silla.</p>
+        <div class="hero-cta">
+          <a class="btn btn-tan" href="#agendar">Agendar ahora</a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+    </div>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="wrap">
+    <div class="reveal"><span class="kicker">Precios claros</span><h2>Servicios</h2>
+    <p class="sec-lede">Sin sorpresas. El precio es el que ves.</p></div>
+    <div class="services reveal" id="svcGrid"></div>
+  </section>
+
+  <!-- CORTE DEL MES -->
+  <section class="wrap">
+    <div class="special reveal">
+      <div class="pic" id="specialPic"></div>
+      <div class="txt">
+        <span class="kicker">El corte del mes</span>
+        <h3>Fade + barba perfilada</h3>
+        <p>Degradado a navaja, barba con toalla caliente y aceite. El combo que más piden, a precio especial todo octubre.</p>
+        <div><a class="btn btn-tan" href="#agendar">Agendar este</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDADOR -->
+  <section id="agendar" class="wrap">
+    <div class="booking reveal">
+      <span class="kicker" style="color:var(--tan)">Agenda en 10 segundos</span>
+      <h2>Reserva tu cita</h2>
+      <div class="step"><span class="lbl">1 · Servicio</span><div class="opts" id="stepSvc"></div></div>
+      <div class="step"><span class="lbl">2 · Día</span><div class="opts" id="stepDay"></div></div>
+      <div class="step"><span class="lbl">3 · Hora</span><div class="opts" id="stepTime"></div></div>
+      <div class="summary" id="summary">Elige servicio, día y hora para continuar.</div>
+      <a class="btn btn-wa send" id="bookSend" href="#" rel="noopener" aria-disabled="true">Confirmar por WhatsApp →</a>
+      <p style="color:#9b9488;font-size:.82rem;margin:.6em 0 0">Tu cita queda apartada cuando te respondemos. No se cobra nada aquí.</p>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="wrap">
+    <div class="reveal"><span class="kicker">El trabajo</span><h2>Cortes recientes</h2>
+    <p class="sec-lede">Un vistazo a lo que sale de la silla.</p></div>
+    <div class="gallery reveal" id="gallery"></div>
+  </section>
+
+  <!-- INFO -->
+  <section class="wrap">
+    <div class="info">
+      <div class="card reveal" id="horarios">
+        <span class="kicker">Horarios</span>
+        <h2 style="font-size:1.6rem;margin:.1em 0">¿Abierto ahora?</h2>
+        <div><span class="mini-status" id="statusHours"><span class="dot"></span><span class="label">…</span></span></div>
+        <ul class="hours" id="hoursList"></ul>
+      </div>
+      <div class="card reveal d1" id="llegar">
+        <span class="kicker">Cómo llegar</span>
+        <h2 style="font-size:1.6rem;margin:.1em 0 .3em">Zona Romántica</h2>
+        <p class="addr">Calle Lázaro Cárdenas 275<br>Puerto Vallarta, Jalisco</p>
+        <div class="map-actions">
+          <a class="btn btn-tan" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=L%C3%A1zaro+C%C3%A1rdenas+Zona+Rom%C3%A1ntica+Puerto+Vallarta">Google Maps</a>
+          <a class="btn btn-outline" target="_blank" rel="noopener" href="https://waze.com/ul?q=L%C3%A1zaro%20C%C3%A1rdenas%20Puerto%20Vallarta&navigate=yes">Waze</a>
+        </div>
+        <div class="mapbox"><button class="loadmap" id="loadMap">🗺️ Ver mapa</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong style="color:var(--ink);font-family:'Bodoni Moda',serif;font-size:1.2rem">Barbería Nómada</strong><br>
+    Calle Lázaro Cárdenas 275, Puerto Vallarta · Tel. 322 475 8995
+    <br><br><span class="demo">Sitio de muestra hecho por VallartaWeb · 322 475 8995</span>
+  </div>
+</footer>
+
+<a class="btn btn-wa fab" id="waFab" href="#" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#063d1c" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.511 5.26l-.999 3.648 3.736-.98z"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  var WA="5213224758995";
+  function wa(m){return "https://wa.me/"+WA+"?text="+encodeURIComponent(m);}
+  function img(id,w,q){return "https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&w="+w+"&q="+(q||62);}
+
+  document.getElementById("heroBg").style.backgroundImage="url('"+img("1635273051937-a0ddef9573b6",1500,62)+"')";
+  document.getElementById("specialPic").style.backgroundImage="url('"+img("1657105052497-f996284ffff8",820,62)+"')";
+  document.getElementById("waFab").href=wa("Hola Barbería Nómada 💈 tengo una pregunta:");
+
+  // ---------- Servicios ----------
+  var SERVICES=[
+    {id:"corte",n:"Corte clásico",p:"$180",min:40,d:"Lavado, corte y peinado"},
+    {id:"corte+barba",n:"Corte + barba",p:"$260",min:60,d:"El combo de la casa"},
+    {id:"barba",n:"Arreglo de barba",p:"$120",min:30,d:"Perfilado con navaja y toalla caliente"},
+    {id:"fade",n:"Fade / degradado",p:"$200",min:45,d:"Degradado a máquina, acabado fino"},
+    {id:"nino",n:"Corte niño",p:"$130",min:30,d:"Para los más chicos"},
+    {id:"ritual",n:"Ritual completo",p:"$380",min:75,d:"Corte, barba, mascarilla y masaje"}
+  ];
+  var svcGrid=document.getElementById("svcGrid");
+  SERVICES.forEach(function(s){var el=document.createElement("div");el.className="svc";
+    el.innerHTML='<div><h3>'+s.n+'</h3><p>'+s.d+' · '+s.min+' min</p></div><span class="price">'+s.p+'</span>';svcGrid.appendChild(el);});
+
+  // ---------- Agendador ----------
+  var sel={svc:null,day:null,time:null};
+  var stepSvc=document.getElementById("stepSvc");
+  SERVICES.forEach(function(s){var b=document.createElement("button");b.className="opt";b.setAttribute("aria-pressed","false");
+    b.dataset.v=s.n;b.innerHTML=s.n+"<small>"+s.p+"</small>";stepSvc.appendChild(b);});
+  var OPEN_DAYS={0:false,1:false,2:true,3:true,4:true,5:true,6:true};
+  var DNAME=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],MNAME=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  var stepDay=document.getElementById("stepDay"),base=new Date(),added=0,i=0;
+  while(added<6&&i<14){var dte=new Date(base.getFullYear(),base.getMonth(),base.getDate()+i),wd=dte.getDay();
+    if(OPEN_DAYS[wd]){var label=(i===0?"Hoy":i===1?"Mañana":DNAME[wd]);var b=document.createElement("button");b.className="opt";b.setAttribute("aria-pressed","false");
+      b.dataset.v=label+" "+dte.getDate()+" "+MNAME[dte.getMonth()];b.innerHTML=label+"<small>"+dte.getDate()+" "+MNAME[dte.getMonth()]+"</small>";stepDay.appendChild(b);added++;}i++;}
+  var TIMES=["10:00","11:00","12:00","13:00","16:00","17:00","18:00","19:00"],stepTime=document.getElementById("stepTime");
+  TIMES.forEach(function(t){var b=document.createElement("button");b.className="opt";b.setAttribute("aria-pressed","false");b.dataset.v=t;b.textContent=t;stepTime.appendChild(b);});
+  function wireGroup(root,key){root.addEventListener("click",function(e){var b=e.target.closest(".opt");if(!b)return;
+    Array.prototype.forEach.call(root.querySelectorAll(".opt"),function(x){x.setAttribute("aria-pressed","false");});
+    b.setAttribute("aria-pressed","true");sel[key]=b.dataset.v;update();});}
+  wireGroup(stepSvc,"svc");wireGroup(stepDay,"day");wireGroup(stepTime,"time");
+  var summary=document.getElementById("summary"),send=document.getElementById("bookSend");
+  function update(){
+    if(sel.svc&&sel.day&&sel.time){
+      summary.innerHTML="Cita: <b>"+sel.svc+"</b> · "+sel.day+" · <b>"+sel.time+"</b>";
+      send.href=wa("Hola Barbería Nómada 💈 quiero agendar:\n\n• Servicio: "+sel.svc+"\n• Día: "+sel.day+"\n• Hora: "+sel.time+"\n\nMi nombre es ___. ¿Me la confirman?");
+      send.setAttribute("aria-disabled","false");
+    }else{var f=[];if(!sel.svc)f.push("servicio");if(!sel.day)f.push("día");if(!sel.time)f.push("hora");
+      summary.textContent="Falta elegir: "+f.join(", ")+".";send.setAttribute("aria-disabled","true");}
+  }
+
+  // ---------- Galería ----------
+  var GAL=["1647140655214-e4a2d914971f","1599351431202-1e0f0137899a","1598524374912-6b0b0bab43dd","1648221122323-572c13a31663"];
+  var gal=document.getElementById("gallery");
+  GAL.forEach(function(id){var im=document.createElement("img");im.loading="lazy";im.alt="Corte";im.src=img(id,420,58);gal.appendChild(im);});
+
+  // ---------- Horarios ----------
+  var SCHED={0:null,1:null,2:[10*60,20*60],3:[10*60,20*60],4:[10*60,20*60],5:[10*60,20*60],6:[9*60,18*60]};
+  var DAYS=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+  function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mm=m%60,ap=h<12?"am":"pm",hh=h%12||12;return hh+(mm?":"+("0"+mm).slice(-2):"")+" "+ap;}
+  function state(){var now=new Date(),d=now.getDay(),mins=now.getHours()*60+now.getMinutes(),s=SCHED[d];
+    if(!s)return{open:false,opens:null};if(mins>=s[0]&&mins<s[1])return{open:true,closes:s[1]};
+    if(mins<s[0])return{open:false,opens:s[0]};return{open:false,opens:null};}
+  function paint(w){var st=state(),l=w.querySelector(".label");w.classList.remove("open","closed");
+    if(st.open){w.classList.add("open");l.textContent="Abierto ahora · cierra "+fmt(st.closes);}
+    else{w.classList.add("closed");if(st.opens!=null)l.textContent="Cerrado · abre hoy "+fmt(st.opens);
+      else{var d=new Date().getDay(),k=1;while(k<=7){var nd=(d+k)%7;if(SCHED[nd]){l.textContent="Cerrado · abre "+DAYS[nd]+" "+fmt(SCHED[nd][0]);break;}k++;}}}}
+  paint(document.getElementById("statusHero"));paint(document.getElementById("statusHours"));
+  var ROWS=[[1,"Lun"],[2,"Mar"],[3,"Mié"],[4,"Jue"],[5,"Vie"],[6,"Sáb"],[0,"Dom"]],hl=document.getElementById("hoursList"),today=new Date().getDay();
+  ROWS.forEach(function(r){var s=SCHED[r[0]],li=document.createElement("li");if(r[0]===today)li.className="today";
+    li.innerHTML="<span>"+r[1]+"</span><span>"+(s?fmt(s[0])+" – "+fmt(s[1]):"Cerrado")+"</span>";hl.appendChild(li);});
+
+  document.getElementById("loadMap").addEventListener("click",function(){
+    this.parentNode.innerHTML='<iframe loading="lazy" title="Mapa" src="https://www.google.com/maps?q=L%C3%A1zaro+C%C3%A1rdenas+Puerto+Vallarta&output=embed"></iframe>';});
+
+  var hdr=document.getElementById("hdr");
+  function onScroll(){hdr.classList.toggle("scrolled",window.scrollY>window.innerHeight*0.72);}
+  onScroll();window.addEventListener("scroll",onScroll,{passive:true});
+  var reveals=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});reveals.forEach(function(r){io.observe(r);});}
+  else reveals.forEach(function(r){r.classList.add("in");});
+})();
+</script>
+</body>
+</html>

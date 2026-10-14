@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mar y Leña · Mariscos y parrilla en Puerto Vallarta</title>
+<meta name="description" content="Mariscos frescos y cortes a la leña frente al mar en Puerto Vallarta. Ve el menú, horarios y reserva por WhatsApp en segundos.">
+<meta name="theme-color" content="#0e3a3a">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Mar y Leña · Mariscos y parrilla">
+<meta property="og:description" content="Mariscos frescos y cortes a la leña frente al mar. Reserva por WhatsApp.">
+<meta property="og:locale" content="es_MX">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%90%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap">
+
+<!-- SEO LOCAL → Google Maps -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Restaurant","name":"Mar y Leña",
+  "servesCuisine":["Mariscos","Parrilla","Mexicana"],"priceRange":"$$","telephone":"+523224758995",
+  "address":{"@type":"PostalAddress","streetAddress":"Paseo del Malecón 120","addressLocality":"Puerto Vallarta","addressRegion":"Jalisco","postalCode":"48300","addressCountry":"MX"},
+  "geo":{"@type":"GeoCoordinates","latitude":20.6109,"longitude":-105.2340},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"13:00","closes":"23:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"13:00","closes":"00:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"13:00","closes":"22:00"}
+  ],"acceptsReservations":"True"
+}
+</script>
+
+<style>
+  :root{
+    --ink:#0c3230;--ink-2:#0e3a3a;--deep:#07201f;
+    --coral:#e9714f;--coral-d:#cf5635;
+    --gold:#e3b23c;
+    --sand:#f5ede1;--cream:#fffdf8;--txt:#20302e;--muted:#5c6a66;
+    --line:rgba(12,50,48,.12);--shadow:0 18px 44px rgba(7,32,31,.16);--radius:20px;
+    --wa:#25D366;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Manrope",system-ui,sans-serif;color:var(--txt);background:var(--sand);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+  .wrap{width:min(1120px,92vw);margin-inline:auto}
+
+  /* textura sutil de grano (muy ligera, inline) */
+  body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ---------- Botones ---------- */
+  .btn{display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;font-family:inherit;
+    font-weight:600;font-size:1rem;text-decoration:none;padding:12px 20px;border-radius:999px;
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .btn-wa{background:var(--wa);color:#063d1c;box-shadow:0 8px 22px rgba(37,211,102,.4)}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 22px rgba(233,113,79,.4)}
+  .btn-coral:hover{background:var(--coral-d)}
+  .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.4);backdrop-filter:blur(4px)}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+  /* ---------- Header ---------- */
+  header.site{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s ease,box-shadow .3s ease,padding .3s ease}
+  .bar{display:flex;align-items:center;gap:14px;justify-content:space-between;padding:16px 0;transition:padding .3s}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-weight:600;font-size:1.3rem;color:#fff;text-decoration:none;transition:color .3s}
+  .brand .mark{width:36px;height:36px;flex:0 0 auto}
+  .nav{display:none;gap:26px;font-size:.96rem;font-weight:500}
+  .nav a{text-decoration:none;color:rgba(255,255,255,.9);transition:color .3s}
+  header.scrolled{background:rgba(245,237,225,.9);backdrop-filter:saturate(1.3) blur(12px);box-shadow:0 4px 20px rgba(7,32,31,.08)}
+  header.scrolled .bar{padding:10px 0}
+  header.scrolled .brand{color:var(--ink)}
+  header.scrolled .nav a{color:var(--ink-2)}
+  header.scrolled .nav a:hover{color:var(--coral-d)}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:#07201f center/cover no-repeat;
+    animation:kenburns 24s ease-out both}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(to top, rgba(7,32,31,.94) 2%, rgba(7,32,31,.35) 48%, rgba(7,32,31,.6) 100%)}
+  @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero-inner{position:relative;z-index:2;padding:0 0 62px;width:min(1120px,92vw);margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:"Manrope";font-size:.8rem;
+    letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#f4d3b0}
+  h1{font-size:clamp(2.9rem,10vw,5.4rem);line-height:1;margin:.28em 0 .32em;color:#fff}
+  h1 em{font-style:italic;color:#f4b48e}
+  .hero .lede{font-size:clamp(1.05rem,2.6vw,1.28rem);color:rgba(255,255,255,.9);max-width:44ch;font-weight:400}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .glass-status{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;
+    font-size:.92rem;font-weight:600;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.25);color:#fff;margin-bottom:22px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#bbb}
+  .glass-status.open .dot{background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
+  .glass-status.closed .dot{background:#fb7185;box-shadow:0 0 0 4px rgba(251,113,133,.25)}
+  .scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:1.4rem;animation:bob 2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+  /* ---------- Secciones ---------- */
+  main{position:relative;z-index:2}
+  section{padding:66px 0}
+  .kicker{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-d);font-weight:700;font-family:"Manrope"}
+  h2{font-size:clamp(2rem,5.5vw,3rem);color:var(--ink);margin:.22em 0 .1em}
+  .sec-lede{color:var(--muted);max-width:52ch;margin:.3em 0 0}
+
+  /* Menú */
+  .filters{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 26px;overflow-x:auto;padding-bottom:4px}
+  .chip{font-family:"Manrope";font-weight:600;font-size:.94rem;border:1.5px solid var(--line);background:var(--cream);
+    color:var(--ink-2);padding:9px 17px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.18s}
+  .chip:hover{border-color:var(--coral)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .menu{display:grid;gap:18px}
+  @media(min-width:620px){.menu{grid-template-columns:1fr 1fr}}
+  .dish{background:var(--cream);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+  .dish:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .dish .thumb{display:block;width:100%;height:190px;border:0;padding:0;font:inherit;cursor:pointer;
+    background:#ddd center center/cover no-repeat;position:relative}
+  .dish .thumb .badge{position:absolute;top:12px;left:12px;font-family:"Manrope";font-size:.68rem;letter-spacing:.08em;
+    text-transform:uppercase;font-weight:700;color:#fff;background:rgba(207,86,53,.95);padding:4px 10px;border-radius:999px;backdrop-filter:blur(2px)}
+  .dish .thumb .zoom{position:absolute;right:12px;bottom:12px;font-family:"Manrope";font-size:.78rem;font-weight:600;color:#fff;
+    background:rgba(7,32,31,.6);backdrop-filter:blur(3px);padding:6px 12px;border-radius:999px;opacity:0;transition:opacity .2s}
+  .dish .thumb:hover .zoom,.dish .thumb:focus-visible .zoom{opacity:1}
+  .dish .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+  .dish .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .dish h3{margin:0;font-size:1.22rem;color:var(--ink)}
+  .dish .price{font-family:"Fraunces",serif;font-weight:600;color:var(--coral-d);font-size:1.2rem;white-space:nowrap}
+  .dish p{margin:6px 0 0;color:var(--muted);font-size:.94rem;flex:1}
+  .dish-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .dish .order{font-family:inherit;font-size:.9rem;padding:9px 15px;background:transparent;color:var(--ink);border:1.5px solid var(--line);cursor:pointer}
+  .dish .order:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:none}
+  .dish .order.ver{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .dish .order.ver:hover{background:var(--coral-d);border-color:var(--coral-d)}
+
+  /* Modal de platillo */
+  .dmodal{position:fixed;inset:0;z-index:80;background:rgba(7,32,31,.74);display:none;align-items:center;justify-content:center;padding:18px}
+  .dmodal.show{display:flex}
+  .dmodal-card{background:var(--cream);border-radius:22px;max-width:460px;width:100%;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.4);max-height:92vh;overflow:auto}
+  .dmodal-x{position:absolute;top:12px;right:12px;z-index:2;border:0;background:rgba(7,32,31,.5);color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.5rem;line-height:1;cursor:pointer}
+  .dmodal-img{height:300px;background:#07201f center center/cover no-repeat}
+  .dmodal-body{padding:24px}
+  .dmodal-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .dmodal-body h3{margin:0;font-size:1.6rem;color:var(--ink)}
+  .dmodal-body .badge{display:inline-block;margin:10px 0 0;font-family:"Manrope";font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--coral-d);padding:4px 10px;border-radius:999px}
+  .dmodal-body p{color:var(--muted);font-size:1rem;margin:12px 0 18px}
+  .dmodal-body .btn-coral{width:100%;justify-content:center}
+
+  /* Platillo del día (split) */
+  .special{display:grid;gap:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--deep)}
+  @media(min-width:760px){.special{grid-template-columns:1.05fr .95fr}}
+  .special .pic{min-height:260px;background:#07201f center/cover no-repeat}
+  .special .txt{padding:36px 32px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+  .special .kicker{color:#f4b48e}
+  .special h3{font-size:clamp(1.8rem,4vw,2.4rem);margin:.15em 0 .3em;color:#fff}
+  .special p{color:#d6e2e0;max-width:46ch;margin:0 0 20px}
+
+  /* Galería (scroll-snap horizontal) */
+  .gallery{display:flex;gap:14px;overflow-x:auto;padding:4px 0 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .gallery img{flex:0 0 auto;width:min(78vw,340px);height:230px;object-fit:cover;border-radius:16px;scroll-snap-align:start;box-shadow:0 8px 20px rgba(7,32,31,.1)}
+
+  /* Info */
+  .info{display:grid;gap:18px}
+  @media(min-width:760px){.info{grid-template-columns:1fr 1fr}}
+  .card{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 6px 18px rgba(7,32,31,.05)}
+  .hours{list-style:none;margin:14px 0 0;padding:0}
+  .hours li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:1rem}
+  .hours li:last-child{border-bottom:0}
+  .hours li.today{font-weight:700;color:var(--ink)}
+  .hours li.today::after{content:"hoy";font-family:"Manrope";font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-d);margin-left:8px}
+  .mini-status{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-weight:600;font-size:.92rem;background:#fff;border:1px solid var(--line);margin-top:10px}
+  .mini-status.open .dot{background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+  .mini-status.closed .dot{background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.18)}
+  .addr{font-size:1.05rem;color:var(--ink);margin:12px 0 18px}
+  .map-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .map-actions .btn{flex:1 1 auto;justify-content:center}
+  .mapbox{margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .mapbox button.loadmap{width:100%;border:0;background:#eadfce;color:var(--ink);font-family:inherit;font-weight:600;padding:42px 16px;cursor:pointer;font-size:1rem}
+  .mapbox iframe{width:100%;height:280px;border:0;display:block}
+
+  /* Reserva (banda con foto) */
+  .reserve{position:relative;border-radius:var(--radius);overflow:hidden;color:#fff;text-align:center;padding:60px 26px;box-shadow:var(--shadow)}
+  .reserve .bg{position:absolute;inset:0;z-index:0;background:#07201f center/cover no-repeat}
+  .reserve .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(7,32,31,.82),rgba(7,32,31,.88))}
+  .reserve .in{position:relative;z-index:1}
+  .reserve h2{color:#fff}
+  .reserve p{color:rgba(255,255,255,.88);max-width:46ch;margin:.4em auto 22px}
+
+  footer{position:relative;z-index:2;padding:46px 0 120px;color:var(--muted);font-size:.92rem;text-align:center;background:var(--sand)}
+  footer .demo{display:inline-block;margin-top:14px;font-size:.82rem;background:#eadfce;color:var(--ink-2);padding:8px 15px;border-radius:999px}
+
+  .fab{position:fixed;right:16px;bottom:16px;z-index:60;box-shadow:0 12px 30px rgba(37,211,102,.5)}
+  .fab svg{width:22px;height:22px}
+
+  @media(min-width:880px){.nav{display:flex}}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .hero-bg{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="site" id="hdr">
+  <div class="wrap bar">
+    <a class="brand" href="#">
+      <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#e9714f"/><path d="M8 25c4-6 8-6 12 0 4-6 8-6 12 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M14 15l6-5 6 5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Mar y Leña
+    </a>
+    <nav class="nav">
+      <a href="#menu">Menú</a><a href="#galeria">Galería</a><a href="#horarios">Horarios</a><a href="#llegar">Cómo llegar</a>
+    </nav>
+    <a class="btn btn-coral" href="#reservar">Reservar</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-inner">
+      <span class="glass-status" id="statusHero"><span class="dot"></span><span class="label">Revisando horario…</span></span>
+      <div>
+        <span class="eyebrow">🦐 Mariscos &amp; parrilla · Puerto Vallarta</span>
+        <h1>Del mar y del<br><em>fuego</em>, a tu mesa.</h1>
+        <p class="lede">Pescado del día, cortes a la leña y margaritas frente al Malecón. Reserva en 10 segundos — sin llamadas, sin esperar.</p>
+        <div class="hero-cta">
+          <a class="btn btn-wa" id="waHero" href="#" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="#063d1c" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.511 5.26l-.999 3.648 3.736-.98z"/></svg>
+            Reservar por WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#menu">Ver el menú</a>
+        </div>
+      </div>
+    </div>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- MENÚ -->
+  <section id="menu" class="wrap">
+    <div class="reveal"><span class="kicker">La carta</span><h2>Nuestro menú</h2>
+    <p class="sec-lede">Lo que sale del mar hoy y lo que pide la parrilla. Toca un platillo para pedirlo por WhatsApp.</p></div>
+    <div class="filters reveal" role="group" aria-label="Filtrar menú">
+      <button class="chip" data-cat="all" aria-pressed="true">Todo</button>
+      <button class="chip" data-cat="entradas" aria-pressed="false">Entradas</button>
+      <button class="chip" data-cat="mar" aria-pressed="false">Del mar</button>
+      <button class="chip" data-cat="leña" aria-pressed="false">A la leña</button>
+      <button class="chip" data-cat="bebidas" aria-pressed="false">Bebidas</button>
+    </div>
+    <div class="menu" id="menuGrid"></div>
+  </section>
+
+  <!-- PLATILLO DEL DÍA -->
+  <section class="wrap">
+    <div class="special reveal">
+      <div class="pic" id="specialPic"></div>
+      <div class="txt">
+        <span class="kicker">Recomendación de la casa</span>
+        <h3>Zarandeado del día</h3>
+        <p>Pescado entero abierto a la leña, bañado en adobo de la casa, con arroz y tortillas hechas a mano. Alcanza para dos. Pregunta por la pesca de hoy.</p>
+        <div><a class="btn btn-coral" id="waSpecial" href="#" rel="noopener">Lo quiero · pedir por WhatsApp</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="wrap">
+    <div class="reveal"><span class="kicker">El ambiente</span><h2>Así se vive</h2>
+    <p class="sec-lede">Mesas frente al mar, atardeceres y todo recién hecho.</p></div>
+    <div class="gallery reveal" id="gallery"></div>
+  </section>
+
+  <!-- HORARIOS + CÓMO LLEGAR -->
+  <section class="wrap">
+    <div class="info">
+      <div class="card reveal" id="horarios">
+        <span class="kicker">Horarios</span>
+        <h2 style="font-size:1.6rem;margin:.1em 0">¿Abierto ahora?</h2>
+        <div><span class="mini-status" id="statusHours"><span class="dot"></span><span class="label">…</span></span></div>
+        <ul class="hours" id="hoursList"></ul>
+      </div>
+      <div class="card reveal d1" id="llegar">
+        <span class="kicker">Cómo llegar</span>
+        <h2 style="font-size:1.6rem;margin:.1em 0 .3em">Frente al Malecón</h2>
+        <p class="addr">Paseo del Malecón 120, Centro<br>Puerto Vallarta, Jalisco</p>
+        <div class="map-actions">
+          <a class="btn btn-coral" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Malec%C3%B3n+Puerto+Vallarta">Google Maps</a>
+          <a class="btn btn-outline" target="_blank" rel="noopener" href="https://waze.com/ul?q=Malec%C3%B3n%20Puerto%20Vallarta&navigate=yes">Waze</a>
+        </div>
+        <div class="mapbox"><button class="loadmap" id="loadMap">🗺️ Ver mapa</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVA -->
+  <section id="reservar" class="wrap">
+    <div class="reserve reveal">
+      <div class="bg" id="reserveBg"></div>
+      <div class="in">
+        <span class="kicker" style="color:#f4b48e">Te esperamos</span>
+        <h2>Aparta tu mesa</h2>
+        <p>Mándanos día, hora y cuántos son. Te confirmamos al momento por WhatsApp.</p>
+        <a class="btn btn-wa" id="waReserve" href="#" rel="noopener" style="font-size:1.08rem;padding:15px 28px">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#063d1c" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892z"/></svg>
+          Reservar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong style="color:var(--ink);font-family:'Fraunces',serif;font-size:1.1rem">Mar y Leña</strong><br>
+    Paseo del Malecón 120, Puerto Vallarta · Tel. 322 475 8995
+    <br><br><span class="demo">Sitio de muestra hecho por VallartaWeb · 322 475 8995</span>
+  </div>
+</footer>
+
+<a class="btn btn-wa fab" id="waFab" href="#" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#063d1c" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.511 5.26l-.999 3.648 3.736-.98zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01z"/></svg>
+  <span style="font-weight:600">WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  var WA="5213224758995";
+  function wa(m){return "https://wa.me/"+WA+"?text="+encodeURIComponent(m);}
+  function img(id,w,q){return "https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&w="+w+"&q="+(q||68);}
+
+  // Fotos
+  document.getElementById("heroBg").style.backgroundImage   = "url('"+img("1571167366136-b57e07761625",1500,64)+"')";
+  document.getElementById("specialPic").style.backgroundImage="url('"+img("1727522793234-2e108fc0460b",820,62)+"')";
+  document.getElementById("reserveBg").style.backgroundImage ="url('"+img("1578935149228-66b184c83e69",1150,56)+"')";
+
+  // WhatsApp links
+  var resMsg="Hola Mar y Leña 🦐 quiero reservar una mesa. Somos ___ personas, el ___ a las ___.";
+  document.getElementById("waHero").href=wa(resMsg);
+  document.getElementById("waReserve").href=wa(resMsg);
+  document.getElementById("waFab").href=wa("Hola Mar y Leña, tengo una pregunta:");
+  document.getElementById("waSpecial").href=wa("Hola Mar y Leña, me interesa el zarandeado del día. ¿Cuál es la pesca de hoy?");
+
+  // ---------- Menú ----------
+  var DISHES=[
+    {cat:"entradas",name:"Aguachile verde",price:"$185",desc:"Camarón crudo, limón, chile serrano y pepino. Picosito.",long:"Camarón fresco curado en jugo de limón, con chile serrano, pepino y cebolla morada. Se sirve bien frío, con tostadas. Pica rico — pídelo suave si prefieres.",tag:"El favorito",img:"1681394421463-9b7471f95b50"},
+    {cat:"entradas",name:"Ostiones frescos ½ doc",price:"$160",desc:"Recién abiertos, con limón y salsa de la casa.",long:"Media docena de ostiones abiertos al momento sobre hielo, con limón, salsa negra y nuestra salsa de la casa. Pregunta por la procedencia del día.",img:"1579631542761-d7c4e913f8d4"},
+    {cat:"mar",name:"Pescado zarandeado",price:"$390",desc:"Entero a la leña, adobo de la casa. Para compartir.",long:"Pescado entero abierto y asado lento a la leña con nuestro adobo. Se sirve con arroz, ensalada y tortillas hechas a mano. Alcanza para dos. Pregunta por la pesca de hoy.",tag:"Especialidad",img:"1611464357429-a34ac648a5e9"},
+    {cat:"mar",name:"Tacos de camarón",price:"$165",desc:"Tres tacos, capeados o a la plancha, con pico y aguacate.",long:"Tres tacos de camarón — capeados crujientes o a la plancha, tú eliges — con pico de gallo, aguacate y salsa cremosa de la casa.",img:"1681394421562-8dd17fb9c2f0"},
+    {cat:"mar",name:"Pulpo a las brasas",price:"$295",desc:"Pulpo suave sobre puré de papa y aceite de chile.",long:"Pulpo cocido lento hasta quedar suave y terminado a las brasas, sobre puré de papa cremoso, con aceite de chile morita y cilantro.",img:"1674207166635-7b2f0a58fea1"},
+    {cat:"leña",name:"Arrachera a la leña",price:"$320",desc:"250 g con guacamole, frijoles charros y tortillas.",long:"250 g de arrachera a la leña, al término que pidas, con guacamole, frijoles charros y tortillas de maíz recién hechas.",img:"1600891964092-4316c288032e"},
+    {cat:"leña",name:"Costilla BBQ tatemada",price:"$340",desc:"Cocción lenta, glaseada con salsa de tamarindo.",long:"Costilla de cerdo de cocción lenta (varias horas), glaseada con nuestra salsa BBQ de tamarindo tatemada. Se cae del hueso.",img:"1601356616077-695728ae17cb"},
+    {cat:"bebidas",name:"Margarita de la casa",price:"$120",desc:"Tequila, limón y sal de gusano. Clásica o de maracuyá.",long:"Nuestra margarita insignia: tequila 100% agave, limón y sal de gusano en el borde. Pídela clásica, de maracuyá o de tamarindo.",img:"1556855810-ac404aa91e85"},
+    {cat:"bebidas",name:"Agua fresca del día",price:"$55",desc:"Pregunta por el sabor de hoy. Vaso o jarra.",long:"Agua fresca natural preparada el día (horchata, jamaica, pepino-limón…). Pregunta por el sabor de hoy. Se sirve por vaso o jarra.",img:"1632739186171-b2a442047bcd"}
+  ];
+
+  // Modal de platillo (foto grande + detalle)
+  var modalEl;
+  function buildModal(){
+    modalEl=document.createElement("div");modalEl.className="dmodal";
+    modalEl.innerHTML='<div class="dmodal-card" role="dialog" aria-modal="true">'
+      +'<button class="dmodal-x" aria-label="Cerrar">×</button>'
+      +'<div class="dmodal-img" id="dmImg"></div>'
+      +'<div class="dmodal-body"><div class="dmodal-head"><h3 id="dmName"></h3><span class="price" id="dmPrice"></span></div>'
+      +'<div id="dmBadge"></div><p id="dmDesc"></p>'
+      +'<a class="btn btn-coral" id="dmOrder" target="_blank" rel="noopener">Pedir por WhatsApp →</a></div></div>';
+    document.body.appendChild(modalEl);
+    modalEl.addEventListener("click",function(e){if(e.target===modalEl||e.target.classList.contains("dmodal-x"))closeModal();});
+    document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();});
+  }
+  function openDish(d){
+    document.getElementById("dmImg").style.backgroundImage="url('"+img(d.img,900,72)+"')";
+    document.getElementById("dmName").textContent=d.name;
+    document.getElementById("dmPrice").textContent=d.price;
+    document.getElementById("dmBadge").innerHTML=d.tag?'<span class="badge">'+d.tag+'</span>':'';
+    document.getElementById("dmDesc").textContent=d.long||d.desc;
+    document.getElementById("dmOrder").href=wa("Hola Mar y Leña, quiero pedir: "+d.name+" ("+d.price+").");
+    modalEl.classList.add("show");document.body.style.overflow="hidden";
+  }
+  function closeModal(){modalEl.classList.remove("show");document.body.style.overflow="";}
+  buildModal();
+
+  function render(cat){
+    var g=document.getElementById("menuGrid");g.innerHTML="";
+    DISHES.forEach(function(d,i){
+      if(cat!=="all"&&d.cat!==cat)return;
+      var el=document.createElement("article");el.className="dish";
+      var badge=d.tag?'<span class="badge">'+d.tag+'</span>':'';
+      el.innerHTML=
+        '<button class="thumb" data-i="'+i+'" style="background-image:url('+"'"+img(d.img,440,60)+"'"+')" aria-label="Ver '+d.name+'">'+badge+'<span class="zoom">🔍 Ver platillo</span></button>'+
+        '<div class="body">'+
+          '<div class="row"><h3>'+d.name+'</h3><span class="price">'+d.price+'</span></div>'+
+          '<p>'+d.desc+'</p>'+
+          '<div class="dish-actions">'+
+            '<button class="btn order ver" data-i="'+i+'">Ver platillo</button>'+
+            '<a class="btn order" target="_blank" rel="noopener" href="'+wa("Hola Mar y Leña, quiero pedir: "+d.name+" ("+d.price+").")+'">Pedir →</a>'+
+          '</div>'+
+        '</div>';
+      g.appendChild(el);
+    });
+  }
+  render("all");
+  document.getElementById("menuGrid").addEventListener("click",function(e){
+    var t=e.target.closest("[data-i]");if(!t)return;
+    openDish(DISHES[parseInt(t.dataset.i,10)]);
+  });
+  var chips=document.querySelectorAll(".chip");
+  chips.forEach(function(c){c.addEventListener("click",function(){
+    chips.forEach(function(x){x.setAttribute("aria-pressed","false");});
+    c.setAttribute("aria-pressed","true");render(c.dataset.cat);
+  });});
+
+  // ---------- Galería ----------
+  var GAL=["1650435489945-96b2b19b943b","1619290462943-e21b611bb772","1672636402078-4b957a572e4e","1578935149228-66b184c83e69"];
+  var gal=document.getElementById("gallery");
+  GAL.forEach(function(id){var im=document.createElement("img");im.loading="lazy";im.alt="Platillo";im.src=img(id,460,58);gal.appendChild(im);});
+
+  // ---------- Horarios ----------
+  var SCHED={0:[13*60,22*60],1:[13*60,23*60],2:[13*60,23*60],3:[13*60,23*60],4:[13*60,23*60],5:[13*60,24*60],6:[13*60,24*60]};
+  var DAYS=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+  function fmt(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mm=m%60,ap=h<12?"am":"pm",hh=h%12||12;return hh+(mm?":"+("0"+mm).slice(-2):"")+" "+ap;}
+  function state(){
+    var now=new Date(),d=now.getDay(),mins=now.getHours()*60+now.getMinutes();
+    var y=(d+6)%7,ys=SCHED[y];
+    if(ys&&ys[1]>1440&&mins<(ys[1]-1440))return{open:true,closes:ys[1]-1440};
+    var s=SCHED[d];if(mins>=s[0]&&mins<s[1])return{open:true,closes:s[1]};
+    if(mins<s[0])return{open:false,opens:s[0]};return{open:false,opens:null};
+  }
+  function paint(w){
+    var st=state(),l=w.querySelector(".label");w.classList.remove("open","closed");
+    if(st.open){w.classList.add("open");l.textContent="Abierto ahora · cierra "+fmt(st.closes);}
+    else{w.classList.add("closed");
+      if(st.opens!=null)l.textContent="Cerrado · abre hoy "+fmt(st.opens);
+      else{var d=new Date().getDay(),i=1;while(i<=7){var nd=(d+i)%7;if(SCHED[nd]){l.textContent="Cerrado · abre "+DAYS[nd]+" "+fmt(SCHED[nd][0]);break;}i++;}}
+    }
+  }
+  paint(document.getElementById("statusHero"));
+  paint(document.getElementById("statusHours"));
+  var ROWS=[[1,"Lun"],[2,"Mar"],[3,"Mié"],[4,"Jue"],[5,"Vie"],[6,"Sáb"],[0,"Dom"]],hl=document.getElementById("hoursList"),today=new Date().getDay();
+  ROWS.forEach(function(r){var s=SCHED[r[0]],li=document.createElement("li");if(r[0]===today)li.className="today";
+    li.innerHTML="<span>"+r[1]+"</span><span>"+fmt(s[0])+" – "+fmt(s[1])+"</span>";hl.appendChild(li);});
+
+  // ---------- Mapa diferido ----------
+  document.getElementById("loadMap").addEventListener("click",function(){
+    this.parentNode.innerHTML='<iframe loading="lazy" title="Mapa" src="https://www.google.com/maps?q=Malec%C3%B3n+Puerto+Vallarta&output=embed"></iframe>';
+  });
+
+  // ---------- Header sólido al bajar ----------
+  var hdr=document.getElementById("hdr");
+  function onScroll(){ hdr.classList.toggle("scrolled", window.scrollY > window.innerHeight*0.75); }
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  // ---------- Reveal on scroll ----------
+  var reveals=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    },{threshold:.12});
+    reveals.forEach(function(r){io.observe(r);});
+  }else{ reveals.forEach(function(r){r.classList.add("in");}); }
+})();
+</script>
+</body>
+</html>

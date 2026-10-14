@@ -10,8 +10,13 @@ Thumbs.db
 
 # Documentos internos de la empresa — NUNCA se publican
 EMPRESA.md
+prospectos/
+kit/
 
 # Documento interno de contexto
 CLAUDE.md
 
 .claude/
+
+# Resumen vigente de la empresa — NUNCA se publica
+ESTADO.md
