@@ -16,7 +16,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&display=swap">
 
 <!-- SEO LOCAL → Google Maps -->
@@ -269,7 +268,7 @@
   "use strict";
   var WA="5213224758995";
   function wa(m){return "https://wa.me/"+WA+"?text="+encodeURIComponent(m);}
-  function img(id,w,q){return "https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&w="+w+"&q="+(q||62);}
+  function img(id,w,q){return "/muestras/img/"+id+".jpg";}
 
   document.getElementById("heroBg").style.backgroundImage="url('"+img("1635273051937-a0ddef9573b6",1500,62)+"')";
   document.getElementById("specialPic").style.backgroundImage="url('"+img("1657105052497-f996284ffff8",820,62)+"')";
