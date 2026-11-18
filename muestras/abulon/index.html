@@ -16,7 +16,7 @@
 <meta property="og:locale" content="es_MX">
 
 <link rel="icon" href="/muestras/abulon/img/logo.jpg">
-<link rel="preload" as="image" href="/muestras/abulon/img/portada.jpg">
+<link rel="preload" as="image" href="/muestras/abulon/img/hero.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +33,7 @@
   "openingHoursSpecification":[
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"12:00","closes":"19:30"}
   ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"1429"},
   "sameAs":["https://www.facebook.com/abulon.antojeria.delmar/","https://www.instagram.com/abulonantojeria/"]
 }
 </script>
@@ -42,6 +43,7 @@
     /* paleta tomada de su logo (turquesa + verde mar profundo) */
     --ink:#0f3b3a;--ink-2:#14504e;--deep:#082625;
     --teal:#5bbcb9;--teal-d:#1d7471;--teal-l:#bfe7e5;
+    --gold:#e2b23f;
     --sand:#f3efe6;--cream:#fffdf8;--txt:#1f302f;--muted:#566866;
     --line:rgba(15,59,58,.13);--shadow:0 18px 44px rgba(8,38,37,.16);--radius:20px;
   }
@@ -51,6 +53,7 @@
     line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   img{max-width:100%;display:block}
   a{color:inherit}
+  button{font-family:inherit}
   h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
   .wrap{width:min(1120px,92vw);margin-inline:auto}
 
@@ -58,7 +61,7 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
   /* ---------- Botones ---------- */
-  .btn{display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;font-family:inherit;
+  .btn{display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;
     font-weight:600;font-size:1rem;text-decoration:none;padding:12px 20px;border-radius:999px;
     transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
   .btn:hover{transform:translateY(-2px)}
@@ -70,13 +73,13 @@
   .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.45);backdrop-filter:blur(4px)}
   .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
   .btn-outline:hover{border-color:var(--teal-d)}
+  .btn-sm{padding:9px 15px;font-size:.92rem}
 
   /* ---------- Header ---------- */
   header.site{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s ease,box-shadow .3s ease}
   .bar{display:flex;align-items:center;gap:14px;justify-content:space-between;padding:16px 0;transition:padding .3s}
   .brand{display:flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-weight:600;font-size:1.25rem;color:#fff;text-decoration:none;transition:color .3s;min-width:0}
   .brand img{width:40px;height:40px;border-radius:50%;flex:0 0 auto;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
-  .brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nav{display:none;gap:26px;font-size:.96rem;font-weight:500}
   .nav a{text-decoration:none;color:rgba(255,255,255,.9);transition:color .3s}
   .bar .btn{padding:10px 16px;font-size:.95rem;flex:0 0 auto}
@@ -88,27 +91,37 @@
   header.scrolled .nav a:hover{color:var(--teal-d)}
 
   /* ---------- Hero ---------- */
-  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
-  .hero-bg{position:absolute;inset:0;z-index:0;background:#082625 url('/muestras/abulon/img/portada.jpg') center/cover no-repeat;
+  .hero{position:relative;min-height:94vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:#082625 url('/muestras/abulon/img/hero.jpg') center 42%/cover no-repeat;
     animation:kenburns 24s ease-out both}
   .hero-bg::after{content:"";position:absolute;inset:0;background:
-    linear-gradient(to top, rgba(8,38,37,.95) 4%, rgba(8,38,37,.35) 50%, rgba(8,38,37,.62) 100%)}
+    linear-gradient(to top, rgba(8,38,37,.96) 6%, rgba(8,38,37,.25) 55%, rgba(8,38,37,.55) 100%)}
   @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
-  .hero-inner{position:relative;z-index:2;padding:0 0 62px;width:min(1120px,92vw);margin:0 auto}
+  /* celular: agrandar la foto para que el platillo quede arriba del texto */
+  @media(max-width:700px) and (orientation:portrait){.hero-bg{background-size:auto 150%;background-position:38% 100%}}
+  .hero-inner{position:relative;z-index:2;padding:0 0 60px;width:min(1120px,92vw);margin:0 auto}
   .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;
     letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--teal-l)}
   h1{font-size:clamp(2.6rem,9vw,5rem);line-height:1;margin:.28em 0 .32em;color:#fff}
   h1 em{font-style:italic;color:var(--teal)}
-  .hero .lede{font-size:clamp(1.05rem,2.6vw,1.28rem);color:rgba(255,255,255,.92);max-width:44ch;font-weight:400}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-  .glass-status{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;
-    font-size:.92rem;font-weight:600;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);
-    border:1px solid rgba(255,255,255,.25);color:#fff;margin-bottom:22px}
+  .hero .lede{font-size:clamp(1.05rem,2.6vw,1.28rem);color:rgba(255,255,255,.92);max-width:44ch;font-weight:400;margin:0}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .chips-top{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .glass{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:999px;
+    font-size:.9rem;font-weight:600;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none}
+  .glass .star{color:var(--gold)}
   .dot{width:9px;height:9px;border-radius:50%;background:#bbb}
-  .glass-status.open .dot{background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
-  .glass-status.closed .dot{background:#fb7185;box-shadow:0 0 0 4px rgba(251,113,133,.25)}
-  .scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:1.4rem;animation:bob 2s ease-in-out infinite}
+  .glass.open .dot{background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
+  .glass.closed .dot{background:#fb7185;box-shadow:0 0 0 4px rgba(251,113,133,.25)}
+  .scrollcue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:1.4rem;animation:bob 2s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ---------- Cinta de fotos ---------- */
+  .ribbon{position:relative;z-index:2;background:var(--deep);padding:14px 0;overflow:hidden}
+  .ribbon-track{display:flex;gap:12px;width:max-content;animation:slide 60s linear infinite}
+  .ribbon img{width:150px;height:110px;object-fit:cover;border-radius:12px;opacity:.95}
+  @keyframes slide{to{transform:translateX(-50%)}}
 
   /* ---------- Reveal on scroll ---------- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -119,46 +132,90 @@
   main{position:relative;z-index:2}
   section{padding:66px 0}
   .kicker{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-d);font-weight:700}
-  h2{font-size:clamp(2rem,5.5vw,3rem);color:var(--ink);margin:.22em 0 .1em}
-  .sec-lede{color:var(--muted);max-width:52ch;margin:.3em 0 0}
+  h2{font-size:clamp(2rem,5.5vw,3rem);color:var(--ink);margin:.22em 0 .1em;line-height:1.1}
+  .sec-lede{color:var(--muted);max-width:52ch;margin:.4em 0 0}
 
-  /* Menú (sin precios ni descripciones: solo lo confirmado) */
-  .filters{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 26px}
-  .chip{font-family:inherit;font-weight:600;font-size:.94rem;border:1.5px solid var(--line);background:var(--cream);
-    color:var(--ink-2);padding:9px 17px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.18s}
+  /* ---------- Menú ---------- */
+  .filters{display:flex;gap:9px;margin:24px 0 26px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .chip{font-weight:600;font-size:.94rem;border:1.5px solid var(--line);background:var(--cream);
+    color:var(--ink-2);padding:9px 17px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.18s;flex:0 0 auto}
   .chip:hover{border-color:var(--teal)}
   .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .menu{display:grid;gap:14px}
+  .menu{display:grid;gap:18px;grid-template-columns:1fr}
   @media(min-width:620px){.menu{grid-template-columns:1fr 1fr}}
-  @media(min-width:960px){.menu{grid-template-columns:1fr 1fr 1fr}}
-  .dish{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;
-    display:flex;flex-direction:column;gap:6px;transition:transform .2s ease,box-shadow .2s ease;position:relative;overflow:hidden}
-  .dish::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--teal)}
-  .dish.drink::before{background:#e2b23f}
-  .dish:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  @media(min-width:980px){.menu{grid-template-columns:1fr 1fr 1fr}}
+  .dish{background:var(--cream);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+  .dish:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .dish .pic{position:relative;display:block;width:100%;aspect-ratio:4/4.2;border:0;padding:0;cursor:pointer;
+    background:#cfe3e1 center/cover no-repeat;overflow:hidden}
+  .dish .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .dish:hover .pic img{transform:scale(1.04)}
+  .dish .pic .count{position:absolute;right:12px;bottom:12px;font-size:.78rem;font-weight:700;color:#fff;
+    background:rgba(8,38,37,.62);backdrop-filter:blur(4px);padding:6px 11px;border-radius:999px}
+  .dish .pic.art{cursor:default;display:grid;place-items:center;aspect-ratio:16/8;
+    background:radial-gradient(120% 120% at 80% 0%, #1d7471 0%, #0f3b3a 55%, #082625 100%)}
+  .dish .pic.art svg{width:42%;max-width:170px;opacity:.95}
+  .dish .pic.art.drinkart{background:radial-gradient(120% 120% at 80% 0%, #e2b23f 0%, #b9771f 45%, #6b3d10 100%)}
+  .dish .badge{position:absolute;top:12px;left:12px;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;color:#fff;background:var(--teal-d);padding:5px 11px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+  .dish .badge.gold{background:var(--gold);color:#3b2a06}
+  .dish .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
   .dish .cat{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
-  .dish h3{margin:0;font-size:1.3rem;color:var(--ink);line-height:1.2}
-  .dish .badge{align-self:flex-start;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
-    color:#fff;background:var(--teal-d);padding:4px 10px;border-radius:999px}
-  .menu-note{color:var(--muted);font-size:.92rem;margin:18px 0 0}
+  .dish h3{margin:0;font-size:1.32rem;color:var(--ink);line-height:1.2}
+  .dish .note{margin:2px 0 0;color:var(--muted);font-size:.92rem}
+  .dish .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
-  /* Recomendación de la casa (sin foto: no hay foto verificada del platillo) */
-  .special{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
-    background:radial-gradient(120% 140% at 85% 10%, #1d7471 0%, #0f3b3a 45%, #082625 100%);color:#fff;
-    padding:46px 32px;display:grid;gap:24px;align-items:center}
-  @media(min-width:760px){.special{grid-template-columns:1.2fr .8fr;padding:56px 52px}}
+  /* Coctelería: banda + lista */
+  .drinks{margin-top:26px;display:grid;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--deep);color:#fff}
+  @media(min-width:760px){.drinks{grid-template-columns:.9fr 1.1fr}}
+  .drinks .pic{min-height:300px;background:#082625 url('/muestras/abulon/img/coctel.jpg') center 30%/cover no-repeat;cursor:pointer;border:0}
+  .drinks .txt{padding:32px 30px}
+  .drinks .kicker{color:var(--gold)}
+  .drinks h3{font-size:clamp(1.8rem,4vw,2.4rem);margin:.15em 0 .4em;color:#fff}
+  .drinks ul{list-style:none;margin:0 0 22px;padding:0}
+  .drinks li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font-family:"Fraunces",serif;font-size:1.25rem}
+  .drinks li:last-child{border-bottom:0}
+  .drinks li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+
+  /* ---------- Recomendación de la casa ---------- */
+  .special{display:grid;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+    background:radial-gradient(120% 140% at 85% 10%, #1d7471 0%, #0f3b3a 45%, #082625 100%);color:#fff}
+  @media(min-width:760px){.special{grid-template-columns:1fr 1fr}}
+  .special .pic{min-height:340px;background:#082625 url('/muestras/abulon/img/mesera.jpg') center 35%/cover no-repeat}
+  .special .txt{padding:40px 32px;display:flex;flex-direction:column;justify-content:center}
   .special .kicker{color:var(--teal-l)}
-  .special h3{font-size:clamp(2.2rem,6vw,3.4rem);margin:.15em 0 .35em;color:#fff;line-height:1.05}
-  .special .waves{width:100%;max-width:170px;justify-self:start;opacity:.9}
-  @media(min-width:760px){.special .waves{max-width:280px;justify-self:center}}
+  .special h3{font-size:clamp(2.2rem,6vw,3.4rem);margin:.15em 0 .3em;color:#fff;line-height:1.05}
+  .special p{color:#d3e6e4;margin:0 0 22px;max-width:40ch}
 
-  /* Galería */
-  .gallery{display:flex;gap:14px;overflow-x:auto;padding:4px 0 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-  .gallery img{flex:0 0 auto;width:min(66vw,260px);height:325px;object-fit:cover;border-radius:16px;scroll-snap-align:start;box-shadow:0 8px 20px rgba(8,38,37,.1);background:#d9e6e4}
-  .credit{font-size:.88rem;color:var(--muted);margin-top:8px}
+  /* ---------- Opiniones ---------- */
+  .rating{display:grid;gap:18px;align-items:start}
+  @media(min-width:880px){.rating{grid-template-columns:.8fr 2fr}}
+  .score{background:var(--ink);color:#fff;border-radius:var(--radius);padding:28px;text-align:center;box-shadow:var(--shadow)}
+  .score .num{font-family:"Fraunces",serif;font-size:4.2rem;line-height:1;font-weight:600}
+  .score .stars{color:var(--gold);font-size:1.4rem;letter-spacing:3px;margin:6px 0}
+  .score .sub{color:#cfe2e0;font-size:.95rem}
+  .score .btn{margin-top:16px}
+  .quotes{display:grid;gap:14px}
+  @media(min-width:640px){.quotes{grid-template-columns:repeat(3,1fr)}}
+  .quote{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:22px 20px;position:relative}
+  .quote::before{content:"“";font-family:"Fraunces",serif;font-size:3.4rem;line-height:1;color:var(--teal);position:absolute;top:8px;left:16px}
+  .quote p{margin:26px 0 10px;font-family:"Fraunces",serif;font-size:1.12rem;color:var(--ink);line-height:1.35}
+  .quote span{font-size:.82rem;color:var(--muted)}
+
+  /* ---------- Galería (mosaico) ---------- */
+  .masonry{columns:2 160px;column-gap:12px}
+  @media(min-width:760px){.masonry{columns:3 220px;column-gap:14px}}
+  @media(min-width:1040px){.masonry{columns:4 220px}}
+  .masonry button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;border-radius:14px;overflow:hidden;cursor:zoom-in;
+    break-inside:avoid;background:#d9e6e4;box-shadow:0 8px 20px rgba(8,38,37,.1)}
+  .masonry img{width:100%;height:auto;transition:transform .5s ease}
+  .masonry button:hover img{transform:scale(1.04)}
+  .credit{font-size:.88rem;color:var(--muted);margin-top:6px}
   .credit a{color:var(--teal-d);font-weight:600}
 
-  /* Info */
+  /* ---------- Info ---------- */
   .info{display:grid;gap:18px}
   @media(min-width:760px){.info{grid-template-columns:1fr 1fr}}
   .card{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 6px 18px rgba(8,38,37,.05)}
@@ -175,18 +232,18 @@
   .map-actions{display:flex;gap:10px;flex-wrap:wrap}
   .map-actions .btn{flex:1 1 auto;justify-content:center}
   .mapbox{margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
-  .mapbox button.loadmap{width:100%;border:0;background:#dcebe9;color:var(--ink);font-family:inherit;font-weight:600;padding:42px 16px;cursor:pointer;font-size:1rem}
+  .mapbox button.loadmap{width:100%;border:0;background:#dcebe9;color:var(--ink);font-weight:600;padding:42px 16px;cursor:pointer;font-size:1rem}
   .mapbox iframe{width:100%;height:280px;border:0;display:block}
 
-  /* Banda de contacto */
+  /* ---------- Contacto ---------- */
   .reserve{position:relative;border-radius:var(--radius);overflow:hidden;color:#fff;text-align:center;padding:60px 26px;box-shadow:var(--shadow)}
-  .reserve .bg{position:absolute;inset:0;z-index:0;background:#082625 url('/muestras/abulon/img/salon.jpg') center 30%/cover no-repeat}
-  .reserve .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(8,38,37,.8),rgba(8,38,37,.9))}
+  .reserve .bg{position:absolute;inset:0;z-index:0;background:#082625 url('/muestras/abulon/img/salon-2.jpg') center/cover no-repeat}
+  .reserve .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(8,38,37,.78),rgba(8,38,37,.9))}
   .reserve .in{position:relative;z-index:1}
   .reserve h2{color:#fff}
-  .reserve p{color:rgba(255,255,255,.9);max-width:46ch;margin:.4em auto 22px}
+  .reserve p{color:rgba(255,255,255,.9);max-width:46ch;margin:.4em auto 14px}
   .reserve .tel{display:block;font-family:"Fraunces",serif;font-size:clamp(1.8rem,6vw,2.6rem);color:#fff;text-decoration:none;margin:0 0 20px}
-  .social{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .social{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
 
   footer{position:relative;z-index:2;padding:46px 0 120px;color:var(--muted);font-size:.92rem;text-align:center;background:var(--sand)}
   footer .demo{display:inline-block;margin-top:18px;font-size:.84rem;background:var(--ink);color:#fff;padding:10px 18px;border-radius:14px;line-height:1.5;max-width:520px}
@@ -195,13 +252,24 @@
 
   .fab{position:fixed;right:16px;bottom:16px;z-index:60;box-shadow:0 12px 30px rgba(29,116,113,.5)}
 
+  /* ---------- Visor de fotos ---------- */
+  .lb{position:fixed;inset:0;z-index:90;background:rgba(5,22,21,.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:56px 12px 20px}
+  .lb.show{display:flex}
+  .lb img{max-width:min(100%,1000px);max-height:78vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lb .cap{color:#e6f2f1;margin-top:14px;font-family:"Fraunces",serif;font-size:1.2rem;text-align:center;min-height:1.5em}
+  .lb .cnt{color:#9fbab8;font-size:.85rem}
+  .lb button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.5rem;line-height:1;cursor:pointer}
+  .lb button:hover{background:rgba(255,255,255,.22)}
+  .lb .x{top:12px;right:12px}
+  .lb .prev{left:10px;top:50%;transform:translateY(-50%)}
+  .lb .next{right:10px;top:50%;transform:translateY(-50%)}
+
   @media(min-width:880px){.nav{display:flex}}
   @media(max-width:420px){.brand{font-size:1.05rem}.bar .btn .lbl{display:none}}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *,*::before{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
-    .hero-bg{transform:none}
   }
 </style>
 </head>
@@ -211,7 +279,7 @@
   <div class="wrap bar">
     <a class="brand" href="#"><img src="/muestras/abulon/img/logo.jpg" alt="Logo de Abulón" width="40" height="40"><span>Abulón</span></a>
     <nav class="nav">
-      <a href="#menu">Menú</a><a href="#galeria">Galería</a><a href="#horarios">Horarios</a><a href="#llegar">Cómo llegar</a>
+      <a href="#menu">Menú</a><a href="#opiniones">Opiniones</a><a href="#galeria">Galería</a><a href="#horarios">Horarios</a><a href="#llegar">Cómo llegar</a>
     </nav>
     <a class="btn btn-call" href="tel:+523222933941" aria-label="Llamar al 322 293 3941">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1z"/></svg>
@@ -223,61 +291,95 @@
 <main>
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" role="img" aria-label="Platillo de Abulón Antojeria del Mar"></div>
+    <div class="hero-bg" role="img" aria-label="Platillo servido frente al letrero de Abulón"></div>
     <div class="hero-inner">
-      <span class="glass-status" id="statusHero"><span class="dot"></span><span class="label">Revisando horario…</span></span>
-      <div>
-        <span class="eyebrow">Cocina del mar · Versalles, Puerto Vallarta</span>
-        <h1>Abulón<br><em>Antojeria del Mar</em></h1>
-        <p class="lede">Cocina Del Mar inspirada en los sabores de nuestra costa del Océano Pacífico Mexicano.</p>
-        <div class="hero-cta">
-          <a class="btn btn-light" href="tel:+523222933941">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1z"/></svg>
-            Llamar · 322 293 3941
-          </a>
-          <a class="btn btn-ghost" href="#menu">Ver el menú</a>
-        </div>
+      <div class="chips-top">
+        <span class="glass" id="statusHero"><span class="dot"></span><span class="label">Revisando horario…</span></span>
+        <a class="glass" href="#opiniones"><span class="star">★</span> 4.7 en Google · 1,429 opiniones</a>
+      </div>
+      <span class="eyebrow">Cocina del mar · Versalles, Puerto Vallarta</span>
+      <h1>Abulón<br><em>Antojeria del Mar</em></h1>
+      <p class="lede">Cocina Del Mar inspirada en los sabores de nuestra costa del Océano Pacífico Mexicano.</p>
+      <div class="hero-cta">
+        <a class="btn btn-light" href="tel:+523222933941">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1z"/></svg>
+          Llamar · 322 293 3941
+        </a>
+        <a class="btn btn-ghost" href="#menu">Ver el menú</a>
       </div>
     </div>
     <div class="scrollcue" aria-hidden="true">↓</div>
   </section>
 
+  <!-- CINTA DE FOTOS -->
+  <div class="ribbon" aria-hidden="true"><div class="ribbon-track" id="ribbon"></div></div>
+
   <!-- MENÚ -->
   <section id="menu" class="wrap">
     <div class="reveal"><span class="kicker">La carta</span><h2>Nuestro menú</h2>
-    <p class="sec-lede">Algunos favoritos de la casa. Pregunta por la carta completa al llamar.</p></div>
+    <p class="sec-lede">Mariscos vallartenses que harán despertar tus sentidos. Toca una foto para verla en grande.</p></div>
     <div class="filters reveal" role="group" aria-label="Filtrar menú">
       <button class="chip" data-cat="all" aria-pressed="true">Todo</button>
       <button class="chip" data-cat="mar" aria-pressed="false">Del mar</button>
-      <button class="chip" data-cat="bebidas" aria-pressed="false">Margaritas</button>
+      <button class="chip" data-cat="tostadas" aria-pressed="false">Tostadas y tacos</button>
+      <button class="chip" data-cat="bebidas" aria-pressed="false">Coctelería</button>
     </div>
     <div class="menu" id="menuGrid"></div>
+
+    <div class="drinks reveal" id="drinks">
+      <button class="pic" id="drinksPic" aria-label="Ver foto de coctelería en grande"></button>
+      <div class="txt">
+        <span class="kicker">Coctelería</span>
+        <h3>Margaritas de la casa</h3>
+        <ul>
+          <li>Margarita de mango</li>
+          <li>Margarita de maracuyá</li>
+          <li>Margarita frozen</li>
+        </ul>
+        <div><a class="btn btn-light btn-sm" href="tel:+523222933941">Pregunta por la coctelería completa</a></div>
+      </div>
+    </div>
   </section>
 
   <!-- RECOMENDACIÓN DE LA CASA -->
-  <section class="wrap" style="padding-top:10px">
+  <section class="wrap" style="padding-top:6px">
     <div class="special reveal">
-      <div>
+      <div class="pic" role="img" aria-label="Mesera de Abulón con platillos frente al mural"></div>
+      <div class="txt">
         <span class="kicker">Recomendación de la casa</span>
         <h3>Pulpo a la parrilla</h3>
-        <a class="btn btn-light" href="tel:+523222933941">
+        <div><a class="btn btn-light" href="tel:+523222933941">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1z"/></svg>
-          Llamar y pedirlo
-        </a>
+          Llamar y apartar
+        </a></div>
       </div>
-      <svg class="waves" viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke-linecap="round">
-        <path d="M10 40c20-18 40-18 60 0s40 18 60 0 40-18 60 0" stroke="#5bbcb9" stroke-width="6"/>
-        <path d="M10 70c20-18 40-18 60 0s40 18 60 0 40-18 60 0" stroke="#bfe7e5" stroke-width="6" opacity=".8"/>
-        <path d="M10 100c20-18 40-18 60 0s40 18 60 0 40-18 60 0" stroke="#5bbcb9" stroke-width="6" opacity=".55"/>
-      </svg>
+    </div>
+  </section>
+
+  <!-- OPINIONES -->
+  <section id="opiniones" class="wrap">
+    <div class="reveal"><span class="kicker">Lo que dicen</span><h2>Opiniones de clientes</h2></div>
+    <div class="rating reveal" style="margin-top:22px">
+      <div class="score">
+        <div class="num">4.7</div>
+        <div class="stars" aria-label="4.7 de 5 estrellas">★★★★★</div>
+        <div class="sub">1,429 opiniones en Google</div>
+        <a class="btn btn-light btn-sm" target="_blank" rel="noopener" href="https://maps.google.com/?cid=1934245140265921753">Verlas en Google</a>
+      </div>
+      <div class="quotes">
+        <div class="quote"><p>Felicidades al chef, muy buena calidad en el producto, el marisco super fresco.</p><span>Opinión en Google</span></div>
+        <div class="quote"><p>Los ingredientes frescos y el personal es muy amigable y servicial.</p><span>Opinión en Google</span></div>
+        <div class="quote"><p>Las tostadas y los tacos de mariscos son deliciosos.</p><span>Opinión en Google</span></div>
+      </div>
     </div>
   </section>
 
   <!-- GALERÍA -->
   <section id="galeria" class="wrap">
-    <div class="reveal"><span class="kicker">El ambiente</span><h2>Así se vive Abulón</h2></div>
-    <div class="gallery reveal" id="gallery"></div>
-    <p class="credit">Fotos de <a href="https://www.instagram.com/abulonantojeria/" target="_blank" rel="noopener">@abulonantojeria</a> y su <a href="https://www.facebook.com/abulon.antojeria.delmar/" target="_blank" rel="noopener">Facebook</a>.</p>
+    <div class="reveal"><span class="kicker">El ambiente</span><h2>Así se vive Abulón</h2>
+    <p class="sec-lede">Toca cualquier foto para verla en grande.</p></div>
+    <div class="masonry reveal" id="gallery" style="margin-top:22px"></div>
+    <p class="credit">Fotos de <a href="https://www.instagram.com/abulonantojeria/" target="_blank" rel="noopener">@abulonantojeria</a>, su <a href="https://www.facebook.com/abulon.antojeria.delmar/" target="_blank" rel="noopener">Facebook</a> y su ficha de Google Maps.</p>
   </section>
 
   <!-- HORARIOS + CÓMO LLEGAR -->
@@ -343,45 +445,97 @@
   Llamar
 </a>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto en grande">
+  <button class="x" aria-label="Cerrar">×</button>
+  <button class="prev" aria-label="Anterior">‹</button>
+  <img id="lbImg" alt="">
+  <div class="cap" id="lbCap"></div>
+  <div class="cnt" id="lbCnt"></div>
+  <button class="next" aria-label="Siguiente">›</button>
+</div>
+
 <script>
 (function(){
   "use strict";
   var IMG="/muestras/abulon/img/";
+  function big(n){return IMG+n+".jpg";}
+  function th(n){return IMG+n+"-t.jpg";}
+  var PHONE="tel:+523222933941";
 
-  // ---------- Menú (solo nombres confirmados; sin precios ni descripciones) ----------
+  // ---------- Visor ----------
+  var lb=document.getElementById("lb"),lbImg=document.getElementById("lbImg"),lbCap=document.getElementById("lbCap"),lbCnt=document.getElementById("lbCnt");
+  var set=[],idx=0,tx=null;
+  function show(){var p=set[idx];lbImg.src=big(p[0]);lbImg.alt=p[1];lbCap.textContent=p[1];lbCnt.textContent=set.length>1?(idx+1)+" / "+set.length:"";
+    lb.querySelector(".prev").style.display=lb.querySelector(".next").style.display=set.length>1?"":"none";}
+  function open(s,i){set=s;idx=i||0;show();lb.classList.add("show");document.body.style.overflow="hidden";}
+  function close(){lb.classList.remove("show");document.body.style.overflow="";lbImg.removeAttribute("src");}
+  function step(d){idx=(idx+d+set.length)%set.length;show();}
+  lb.addEventListener("click",function(e){
+    if(e.target.classList.contains("prev"))step(-1);
+    else if(e.target.classList.contains("next"))step(1);
+    else if(e.target===lb||e.target.classList.contains("x"))close();
+  });
+  document.addEventListener("keydown",function(e){if(!lb.classList.contains("show"))return;
+    if(e.key==="Escape")close();else if(e.key==="ArrowRight")step(1);else if(e.key==="ArrowLeft")step(-1);});
+  lb.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener("touchend",function(e){if(tx==null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)step(dx<0?1:-1);tx=null;});
+
+  // ---------- Menú ----------
+  // Nombres: los que dio el negocio + los que ellos mismos publican en Instagram. Sin precios ni descripciones inventadas.
+  var FISH='<svg viewBox="0 0 200 120" fill="none" stroke-linecap="round" aria-hidden="true"><path d="M20 60c30-38 90-44 130-10l30-24v68l-30-24c-40 34-100 28-130-10z" stroke="#bfe7e5" stroke-width="5"/><circle cx="58" cy="54" r="5" fill="#bfe7e5"/><path d="M30 104c18-10 36-10 54 0s36 10 54 0" stroke="#5bbcb9" stroke-width="5" opacity=".8"/></svg>';
   var DISHES=[
-    {cat:"mar",name:"Pulpo a la parrilla",tag:"Recomendación de la casa"},
-    {cat:"mar",name:"Tostada de ceviche de camarón"},
-    {cat:"mar",name:"Tacos de camarón y pulpo"},
-    {cat:"bebidas",name:"Margarita de mango"},
-    {cat:"bebidas",name:"Margarita de maracuyá"},
-    {cat:"bebidas",name:"Margarita frozen"}
+    {cat:"mar",name:"Salmón Maya",tag:"Recomendación del chef",gold:true,pos:"center 85%",pics:[["salmon-maya","Salmón Maya"],["salmon-maya-2","Salmón Maya"],["salmon-coctel","Salmón Maya"]]},
+    {cat:"mar",name:"Camarones tatemados",pics:[["camarones-tatemados","Camarones tatemados"],["camarones-tatemados-2","Camarones tatemados"]]},
+    {cat:"tostadas",name:"Tostadas de Abulón",tag:"Favoritas de muchos",gold:true,pics:[["tostadas","Tostadas de Abulón"],["tostadas-2","Tostadas de Abulón"],["tostada-3","Tostadas de Abulón"]]},
+    {cat:"tostadas",name:"Tacos de camarón y pulpo",pics:[["tacos","Tacos de camarón y pulpo"]]},
+    {cat:"mar",name:"Pulpo a la parrilla",tag:"Recomendación de la casa",note:"Pregunta por él al llamar."},
+    {cat:"tostadas",name:"Tostada de ceviche de camarón",note:"Pregunta por ella al llamar."}
   ];
-  var CATS={mar:"Del mar",bebidas:"Margaritas"};
+  var CATS={mar:"Del mar",tostadas:"Tostadas y tacos"};
   function render(cat){
     var g=document.getElementById("menuGrid");g.innerHTML="";
-    DISHES.forEach(function(d){
+    document.getElementById("drinks").style.display=(cat==="all"||cat==="bebidas")?"":"none";
+    g.style.display=cat==="bebidas"?"none":"";
+    DISHES.forEach(function(d,i){
       if(cat!=="all"&&d.cat!==cat)return;
-      var el=document.createElement("article");el.className="dish"+(d.cat==="bebidas"?" drink":"");
-      el.innerHTML='<span class="cat">'+CATS[d.cat]+'</span><h3>'+d.name+'</h3>'+(d.tag?'<span class="badge">'+d.tag+'</span>':'');
+      var el=document.createElement("article");el.className="dish";
+      var badge=d.tag?'<span class="badge'+(d.gold?' gold':'')+'">'+d.tag+'</span>':'';
+      var pic=d.pics
+        ? '<button class="pic" data-i="'+i+'" aria-label="Ver fotos de '+d.name+'"><img loading="lazy" decoding="async" src="'+th(d.pics[0][0])+'" alt="'+d.name+'"'+(d.pos?' style="object-position:'+d.pos+'"':'')+'>'+badge+(d.pics.length>1?'<span class="count">📷 '+d.pics.length+' fotos</span>':'')+'</button>'
+        : '<div class="pic art">'+FISH+badge+'</div>';
+      el.innerHTML=pic+'<div class="body"><span class="cat">'+CATS[d.cat]+'</span><h3>'+d.name+'</h3>'+(d.note?'<p class="note">'+d.note+'</p>':'')+
+        '<div class="acts">'+(d.pics?'<button class="btn btn-outline btn-sm" data-i="'+i+'">Ver fotos</button>':'')+
+        '<a class="btn btn-call btn-sm" href="'+PHONE+'">Llamar y pedir</a></div></div>';
       g.appendChild(el);
     });
   }
   render("all");
+  document.getElementById("menuGrid").addEventListener("click",function(e){
+    var t=e.target.closest("[data-i]");if(!t)return;var d=DISHES[+t.dataset.i];if(d.pics)open(d.pics,0);
+  });
   var chips=document.querySelectorAll(".chip");
   chips.forEach(function(c){c.addEventListener("click",function(){
     chips.forEach(function(x){x.setAttribute("aria-pressed","false");});
     c.setAttribute("aria-pressed","true");render(c.dataset.cat);
   });});
+  document.getElementById("drinksPic").addEventListener("click",function(){open([["coctel","Coctelería de Abulón"],["coctel-2","Coctelería de Abulón"]],0);});
 
-  // ---------- Galería (fotos de su Instagram) ----------
-  var GAL=[["aguachile","Platillo de mariscos de Abulón"],["salon","El salón de Abulón"],["tostada","Tostada de Abulón"],
-           ["bebida","Bebida de Abulón"],["salmon_bebida","Platillo y bebida de Abulón"],["chef","Equipo de Abulón"],["mesa","Clientes en Abulón"]];
+  // ---------- Galería ----------
+  var GAL=[["pescado","Pescado entero"],["mesera","Servicio en Abulón"],["camarones-tatemados-2","Camarones tatemados"],["salon","El salón"],
+    ["tacos-3","Tacos"],["tostada-bebida","Tostada y bebida de la casa"],["coctel-2","Platillo y coctel"],["terraza","La terraza"],
+    ["tostadas-2","Tostadas de Abulón"],["salmon-maya-2","Salmón Maya"],["salon-2","El salón"],["aguachile","Mariscos de Abulón"],
+    ["tacos-2","Tacos"],["coctel","Coctelería"],["tostada-3","Tostada"],["salmon-coctel","Salmón Maya"]];
   var gal=document.getElementById("gallery");
-  GAL.forEach(function(p){var im=document.createElement("img");im.loading="lazy";im.decoding="async";im.alt=p[1];im.src=IMG+p[0]+".jpg";gal.appendChild(im);});
+  GAL.forEach(function(p,i){var b=document.createElement("button");b.setAttribute("aria-label","Ver en grande: "+p[1]);
+    b.innerHTML='<img loading="lazy" decoding="async" src="'+th(p[0])+'" alt="'+p[1]+'">';
+    b.addEventListener("click",function(){open(GAL,i);});gal.appendChild(b);});
+
+  // ---------- Cinta ----------
+  var RIB=["tostadas","camarones-tatemados","salon","salmon-maya","tacos-3","coctel","pescado","terraza","tostada-bebida","mesera"];
+  var rb=document.getElementById("ribbon");
+  RIB.concat(RIB).forEach(function(n){var im=document.createElement("img");im.loading="lazy";im.decoding="async";im.alt="";im.src=th(n);rb.appendChild(im);});
 
   // ---------- Horarios (según su Facebook) · hora de Puerto Vallarta ----------
-  // minutos desde medianoche; null = cerrado
   var SCHED={0:[720,1170],1:null,2:[720,1170],3:[720,1170],4:[720,1170],5:[720,1170],6:[720,1170]};
   var DAYS=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
   function nowPV(){
@@ -422,7 +576,7 @@
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(ents){
       ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
-    },{threshold:.12});
+    },{threshold:.08});
     reveals.forEach(function(r){io.observe(r);});
   }else{ reveals.forEach(function(r){r.classList.add("in");}); }
 })();
