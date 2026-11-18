@@ -12,20 +12,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,600;0,800;1,600;1,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/muestras/mktronic/img/mercedes.jpg">
-<script>document.documentElement.classList.add('js')</script>
+<script>
+document.documentElement.classList.add('mk');
+addEventListener('load',function(){setTimeout(function(){if(!window.MK_OK)document.documentElement.classList.remove('mk')},2500)});
+</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AutoRepair","name":"MKTronic Multiservicios Automotrices","image":"https://vallartaweb.vercel.app/muestras/mktronic/img/fachada.jpg","logo":"https://vallartaweb.vercel.app/muestras/mktronic/img/logo-dark.png","telephone":"+523223181218","email":"mktronic.pv@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Calle Veracruz 667, Col. La Floresta, El Pitillal","addressLocality":"Puerto Vallarta","addressRegion":"Jalisco","postalCode":"48290","addressCountry":"MX"},"geo":{"@type":"GeoCoordinates","latitude":20.6630497,"longitude":-105.2180787},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"16:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"34"}}
 </script>
 <style>
 :root{
-  --bg:#060608;--bg2:#0c0c10;--panel:#111117;--line:rgba(255,255,255,.09);
-  --ink:#f3f3f5;--mute:#9b9ba8;--red:#ff2121;--red-d:#a80000;--amber:#ffb300;--cyan:#38e1ff;
+  --bg:#060608;--bg2:#0b0b0f;--panel:#111117;--line:rgba(255,255,255,.09);
+  --ink:#f3f3f5;--mute:#9b9ba8;--red:#ff2121;--amber:#ffb300;--cyan:#38e1ff;
   --disp:"Anton",Impact,sans-serif;--cond:"Barlow Condensed",sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--sans:"Inter",system-ui,sans-serif;
+  --ease:cubic-bezier(.77,0,.18,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg);-webkit-text-size-adjust:100%}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
 body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 main,footer{overflow-x:clip}
@@ -33,106 +38,156 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ::selection{background:var(--red);color:#fff}
 .wrap{width:min(1240px,100% - 32px);margin-inline:auto}
-.mono{font-family:var(--mono)}
-.kick{font:700 12px/1 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:10px}
-.kick::before{content:"";width:28px;height:2px;background:var(--red);box-shadow:0 0 12px var(--red)}
-.h2{font:400 clamp(44px,7.4vw,108px)/.9 var(--disp);text-transform:uppercase;letter-spacing:.005em}
+.kick{font:700 12px/1.3 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:10px}
+.kick::before{content:"";width:28px;height:2px;background:var(--red);box-shadow:0 0 12px var(--red);flex:none}
+.h2{font:400 clamp(44px,7.4vw,108px)/.9 var(--disp);text-transform:uppercase}
 .h2 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
-.h2 .r{color:var(--red)}
+.r{color:var(--red)}
 
-/* grain + vignette */
-.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:90;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(6) infinite}
+/* grain */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:95;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(6) infinite}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-5%,3%)}40%{transform:translate(3%,-6%)}60%{transform:translate(-7%,-2%)}80%{transform:translate(5%,6%)}100%{transform:translate(0,0)}}
 
-/* ===== loader ===== */
-.loader{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:#030304}
-.loader .cur{position:absolute;left:0;right:0;height:50.5%;background:#030304;transition:transform 1s cubic-bezier(.77,0,.18,1)}
-.loader .cur.t{top:0}.loader .cur.b{bottom:0}
-.loader .tach{position:relative;z-index:2;width:min(300px,70vw);text-align:center;transition:opacity .4s,transform .6s}
+/* ===== GATE: push to start ===== */
+.gate{display:none}
+.mk .gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:#030304;overflow:hidden}
+.gate .cur{position:absolute;left:0;right:0;height:50.5%;background:#030304;transition:transform 1.1s var(--ease);z-index:1}
+.gate .cur.t{top:0}.gate .cur.b{bottom:0}
+.gate::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 40% at 50% 55%,rgba(255,33,33,.14),transparent 70%);z-index:2;pointer-events:none;transition:opacity .6s}
+.gate-in{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px;transition:opacity .45s,transform .7s var(--ease)}
+.glogo{width:min(230px,52vw);margin-bottom:34px}
+.start{position:relative;width:148px;height:148px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2a33,#0c0c10 70%);box-shadow:0 0 0 6px #17171d,0 0 0 8px #2c2c36,0 20px 60px -10px rgba(0,0,0,.9),inset 0 2px 6px rgba(255,255,255,.12);transition:transform .15s}
+.start:active{transform:scale(.95)}
+.start::before{content:"";position:absolute;inset:14px;border-radius:50%;border:2px solid var(--red);box-shadow:0 0 18px rgba(255,33,33,.8),inset 0 0 18px rgba(255,33,33,.5);animation:breathe 1.8s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.35;box-shadow:0 0 4px rgba(255,33,33,.4),inset 0 0 4px rgba(255,33,33,.2)}}
+.start b{font:400 22px/1 var(--disp);letter-spacing:.06em;color:#fff}
+.start small{display:block;font:700 10px var(--mono);letter-spacing:.3em;color:var(--mute);margin-top:6px}
+.start:hover::before{animation-duration:.6s}
+.ghint{font:700 12px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:26px}
+.glang{display:flex;gap:6px;margin-top:22px}
+.glang button,.lang button{font:800 13px var(--cond);letter-spacing:.18em;text-transform:uppercase;padding:9px 14px;border:1px solid var(--line);color:var(--mute);transition:background .2s,color .2s,border-color .2s}
+.glang button[aria-pressed=true],.lang button[aria-pressed=true]{background:#fff;color:#000;border-color:#fff}
+.mute-enter{margin-top:20px;font:600 12px var(--mono);letter-spacing:.14em;color:#6d6d78;text-decoration:underline;text-underline-offset:4px}
+.mute-enter:hover{color:#fff}
+.tach{position:absolute;z-index:3;width:min(320px,74vw);text-align:center;opacity:0;transform:scale(.85);transition:opacity .4s,transform .6s var(--ease);pointer-events:none}
 .tach svg{width:100%;overflow:visible}
-.tach .rpm{font:700 13px var(--mono);letter-spacing:.3em;color:var(--mute);margin-top:-30px}
-.tach .rpm b{display:block;font:400 54px/1 var(--disp);color:var(--ink);letter-spacing:.02em}
-.tach .lg{width:150px;margin:18px auto 0;opacity:.9}
-.shift{display:flex;gap:6px;justify-content:center;margin-bottom:14px}
-.shift i{width:12px;height:12px;border-radius:50%;background:#1b1b22;transition:background .1s,box-shadow .1s}
+.tach .rpm{font:700 12px var(--mono);letter-spacing:.3em;color:var(--mute);margin-top:-34px}
+.tach .rpm b{display:block;font:400 58px/1 var(--disp);color:var(--ink)}
+.shift{display:flex;gap:7px;justify-content:center;margin-bottom:16px}
+.shift i{width:13px;height:13px;border-radius:50%;background:#1b1b22}
 .shift i.on{background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
 .shift i.on.y{background:var(--amber);box-shadow:0 0 12px var(--amber)}
 .shift i.on.rd{background:var(--red);box-shadow:0 0 14px var(--red)}
-.shift.flash i{background:var(--red)!important;box-shadow:0 0 18px var(--red)!important;animation:fl .09s steps(2) infinite}
-@keyframes fl{50%{opacity:.15}}
-body.go .loader{pointer-events:none}
-body.go .loader .tach{opacity:0;transform:scale(1.15)}
-body.go .loader .cur.t{transform:translateY(-101%)}
-body.go .loader .cur.b{transform:translateY(101%)}
-body.gone .loader{display:none}
+.shift.flash i{background:var(--red)!important;box-shadow:0 0 18px var(--red)!important;animation:fl .08s steps(2) infinite}
+@keyframes fl{50%{opacity:.1}}
+.gate.rev .gate-in{opacity:0;transform:scale(.9);pointer-events:none}
+.gate.rev .tach{opacity:1;transform:none}
+.gate.shake .tach svg{animation:shk .07s linear infinite}
+@keyframes shk{25%{transform:translate(1px,-1px)}50%{transform:translate(-1px,1px)}75%{transform:translate(1px,1px)}}
+body.go .gate{pointer-events:none;background:transparent}
+body.go .gate::before{opacity:0}
+body.go .gate .tach{opacity:0;transform:scale(1.25)}
+body.go .gate .cur.t{transform:translateY(-101%)}
+body.go .gate .cur.b{transform:translateY(101%)}
+body.gone .gate{display:none}
 
 /* ===== nav ===== */
-.nav{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .35s,backdrop-filter .35s,transform .4s}
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .35s}
 .nav.solid{background:rgba(6,6,8,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav .wrap{display:flex;align-items:center;gap:22px;height:72px}
+.nav .brand{margin-right:auto}
 .nav .brand img{height:44px;width:auto}
-.nav ul{display:flex;gap:30px;list-style:none;font:600 15px var(--cond);letter-spacing:.18em;text-transform:uppercase}
+.nav ul{display:flex;gap:28px;list-style:none;font:600 15px var(--cond);letter-spacing:.18em;text-transform:uppercase}
 .nav ul a{opacity:.75;transition:opacity .2s,color .2s}
 .nav ul a:hover{opacity:1;color:var(--red)}
-.btn{display:inline-flex;align-items:center;gap:10px;font:800 15px/1 var(--cond);letter-spacing:.14em;text-transform:uppercase;padding:16px 24px;border-radius:2px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:transform .25s,background .25s,box-shadow .25s;will-change:transform}
+.lang{display:flex}
+.lang button{padding:7px 10px;font-size:12px}
+.snd{width:42px;height:38px;display:flex;align-items:flex-end;justify-content:center;gap:3px;padding:10px 0;border:1px solid var(--line)}
+.snd i{width:3px;height:4px;background:var(--mute);transition:background .2s}
+.snd[aria-pressed=true] i{background:var(--red);animation:eq .9s ease-in-out infinite}
+.snd[aria-pressed=true] i:nth-child(2){animation-delay:-.3s}.snd[aria-pressed=true] i:nth-child(3){animation-delay:-.6s}.snd[aria-pressed=true] i:nth-child(4){animation-delay:-.15s}
+@keyframes eq{0%,100%{height:4px}50%{height:16px}}
+.btn{display:inline-flex;align-items:center;gap:10px;font:800 15px/1 var(--cond);letter-spacing:.14em;text-transform:uppercase;padding:16px 24px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:transform .25s,background .25s,box-shadow .25s}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-red{background:var(--red);color:#fff;box-shadow:0 10px 40px -10px rgba(255,33,33,.8)}
 .btn-red:hover{background:#ff3d3d;box-shadow:0 14px 50px -8px rgba(255,33,33,1)}
 .btn-ghost{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px)}
 .btn-ghost:hover{background:rgba(255,255,255,.12)}
 .nav .btn{padding:12px 18px;font-size:13px}
-@media(max-width:860px){.nav ul{display:none}.nav .brand img{height:36px}.nav .btn span{display:none}.nav .btn{padding:12px 16px}}
+@media(max-width:960px){.nav ul{display:none}}
+@media(max-width:560px){.nav .wrap{gap:8px}.nav .brand img{height:34px}.nav .btn span{display:none}.nav .btn{padding:11px 14px}.snd{width:38px}}
 
 /* ===== hero ===== */
-.hero{position:relative;height:100svh;min-height:620px;overflow:hidden;display:flex;align-items:flex-end;isolation:isolate}
-.hero-bg{position:absolute;inset:-4% -2% -10%;background:url(/muestras/mktronic/img/mercedes.jpg) 62% 55%/cover no-repeat;filter:saturate(1.2) contrast(1.15) brightness(.6);transform-origin:60% 60%;z-index:-3}
-.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end;isolation:isolate}
+.hero-bg{position:absolute;inset:-4% -2% -10%;background:url(/muestras/mktronic/img/mercedes.jpg) 62% 55%/cover no-repeat;filter:saturate(1.2) contrast(1.15) brightness(.6);z-index:-4}
+.hero-shade{position:absolute;inset:0;z-index:-3;background:
   radial-gradient(70% 60% at 70% 55%,transparent 0,rgba(6,6,8,.35) 60%,rgba(6,6,8,.9) 100%),
   linear-gradient(180deg,rgba(6,6,8,.75) 0,transparent 26%,transparent 50%,rgba(6,6,8,.96) 92%),
-  linear-gradient(90deg,rgba(6,6,8,.95) 0,rgba(6,6,8,.55) 42%,transparent 72%),linear-gradient(0deg,rgba(10,30,60,.25),rgba(10,30,60,.25))}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;mix-blend-mode:screen;opacity:.55;background:radial-gradient(40% 30% at 82% 70%,rgba(255,30,30,.45),transparent 70%)}
-#smoke{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
-.streaks{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;opacity:.5}
-.streaks i{position:absolute;height:1px;width:40vw;left:-45vw;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:streak linear infinite}
-@keyframes streak{to{transform:translateX(160vw)}}
-.lbx{position:absolute;left:0;right:0;height:9vh;background:#000;z-index:5;transition:transform 1.4s cubic-bezier(.77,0,.18,1) .2s}
+  linear-gradient(90deg,rgba(6,6,8,.95) 0,rgba(6,6,8,.55) 42%,transparent 72%),
+  linear-gradient(0deg,rgba(10,30,60,.25),rgba(10,30,60,.25))}
+#smoke{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.flare{position:absolute;left:-10%;right:-10%;top:61%;height:2px;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(80,170,255,0) 20%,rgba(120,200,255,.55) 62%,rgba(255,255,255,.9) 70%,rgba(120,200,255,.5) 76%,transparent);filter:blur(1px);box-shadow:0 0 30px 6px rgba(80,170,255,.25);mix-blend-mode:screen;animation:flk 4s ease-in-out infinite}
+@keyframes flk{0%,100%{opacity:.55}45%{opacity:.85}50%{opacity:.4}55%{opacity:.8}}
+.lbx{position:absolute;left:0;right:0;height:9vh;background:#000;z-index:5;transition:transform 1.4s var(--ease) .2s}
 .lbx.t{top:0}.lbx.b{bottom:0}
 body.go .lbx.t{transform:translateY(-100%)}
 body.go .lbx.b{transform:translateY(100%)}
 .hero-in{position:relative;padding-bottom:clamp(40px,8vh,90px)}
 .hero .kick{margin-bottom:22px}
-.hero h1{font:400 clamp(44px,7.4vw,118px)/.86 var(--disp);text-transform:uppercase;letter-spacing:-.005em}
+.hero h1{font:400 clamp(44px,7.4vw,118px)/.86 var(--disp);text-transform:uppercase}
 .hero h1 .ln{display:block;overflow:hidden;padding:.1em 0 .04em;margin-top:-.1em;white-space:nowrap}
 .hero h1 .ln>span{display:inline-block}
 .hero h1 .out{color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.92)}
-.hero h1 .r{color:var(--red);text-shadow:0 0 40px rgba(255,33,33,.45)}
+.hero h1 .r{text-shadow:0 0 40px rgba(255,33,33,.45)}
+.glitch{text-shadow:2px 0 rgba(255,0,60,.75),-2px 0 rgba(0,220,255,.75)!important}
 .hero p.lead{max-width:520px;margin:26px 0 30px;font-size:clamp(16px,1.6vw,19px);color:#d6d6de}
-.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hud{position:absolute;right:max(16px,calc((100vw - 1240px)/2));bottom:clamp(40px,8vh,90px);display:grid;gap:10px;font:600 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-align:right}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hud{position:absolute;right:0;bottom:clamp(40px,8vh,90px);display:grid;gap:10px;font:600 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-align:right}
 .hud div{padding:10px 14px;border:1px solid var(--line);background:rgba(6,6,8,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .hud .st{display:inline-flex;align-items:center;gap:8px;justify-content:flex-end}
-.hud .dot{width:8px;height:8px;border-radius:50%;background:#555}
-.hud .dot.on{background:#2bff88;box-shadow:0 0 10px #2bff88;animation:pulse 1.6s infinite}
-.hud .dot.off{background:var(--red)}
+.dot{width:8px;height:8px;border-radius:50%;background:#555;flex:none}
+.dot.on{background:#2bff88;box-shadow:0 0 10px #2bff88;animation:pulse 1.6s infinite}
+.dot.off{background:var(--red)}
 @keyframes pulse{50%{opacity:.35}}
-.hud .star{color:var(--amber)}
-.scroll-cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font:600 10px var(--mono);letter-spacing:.3em;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-cue::after{content:"";width:1px;height:38px;background:linear-gradient(var(--red),transparent);animation:cue 1.8s infinite}
-@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.star{color:var(--amber)}
 @media(max-width:860px){
   .hud{position:static;text-align:left;margin-top:26px;grid-template-columns:1fr 1fr;font-size:10.5px}
   .hud .st{justify-content:flex-start}
   .hud div:last-child{grid-column:1/-1}
-  .hero{align-items:flex-end;height:auto;min-height:100svh}
+  .hero{height:auto;min-height:100svh}
   .hero-in{padding-top:110px}
   .hero-bg{background-position:30% 62%;filter:saturate(1.2) contrast(1.15) brightness(.75)}
-  .hero::before{background:linear-gradient(180deg,rgba(6,6,8,.7) 0,rgba(6,6,8,.15) 22%,rgba(6,6,8,.55) 48%,rgba(6,6,8,.96) 78%)}
+  .hero-shade{background:linear-gradient(180deg,rgba(6,6,8,.7) 0,rgba(6,6,8,.15) 22%,rgba(6,6,8,.55) 48%,rgba(6,6,8,.96) 78%)}
   .hero .kick{letter-spacing:.18em}
-  .scroll-cue{display:none}
   .lbx{height:6vh}
+  .flare{top:42%}
 }
 
-/* ===== ticker ===== */
+/* velocity lines (whole screen) */
+.vlines{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:0;overflow:hidden}
+.vlines i{position:absolute;height:1px;width:38vw;left:-40vw;background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);animation:streak linear infinite}
+@keyframes streak{to{transform:translateX(150vw)}}
+
+/* mini tach HUD */
+.rpmhud{position:fixed;left:18px;bottom:18px;z-index:84;width:104px;height:104px;border-radius:50%;background:radial-gradient(circle,#111117 0,#07070a 72%);box-shadow:0 0 0 1px var(--line),0 16px 40px -10px rgba(0,0,0,.9);opacity:0;transform:scale(.6);transition:opacity .5s,transform .6s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
+.rpmhud.on{opacity:1;transform:none}
+.rpmhud svg{position:absolute;inset:0;width:100%;height:100%}
+.rpmhud .rv{position:absolute;left:0;right:0;top:58%;text-align:center;font:700 8px var(--mono);letter-spacing:.2em;color:var(--mute)}
+.rpmhud .rv b{display:block;font:400 17px/1 var(--disp);color:#fff;letter-spacing:.04em}
+.rpmhud .hint{position:absolute;left:112px;top:50%;transform:translateY(-50%);white-space:nowrap;font:700 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);background:rgba(6,6,8,.75);padding:7px 10px;border:1px solid var(--line);transition:opacity .6s}
+.rpmhud .hint.gone{opacity:0}
+@media(max-width:560px){.rpmhud{width:78px;height:78px;left:12px;bottom:12px}.rpmhud .rv b{font-size:13px}.rpmhud .hint{left:86px}}
+
+/* cursor */
+.cur-r,.cur-d{position:fixed;left:0;top:0;z-index:300;pointer-events:none;border-radius:50%;mix-blend-mode:difference;display:none}
+.fine .cur-r,.fine .cur-d{display:block;opacity:0;transition:opacity .3s,width .25s,height .25s,margin .25s,background .25s}
+.fine.moved .cur-r,.fine.moved .cur-d{opacity:1}
+.cur-r{width:38px;height:38px;margin:-19px 0 0 -19px;border:1.5px solid #fff;transition:width .25s,height .25s,margin .25s,background .25s}
+.cur-r.h{width:74px;height:74px;margin:-37px 0 0 -37px;background:#fff}
+.cur-d{width:6px;height:6px;margin:-3px 0 0 -3px;background:#fff}
+.fine,.fine a,.fine button{cursor:none}
+
+/* ticker */
 .ticker{position:relative;z-index:3;background:var(--red);transform:rotate(-2deg) scale(1.04);margin:-28px 0 0;padding:14px 0;overflow:hidden;box-shadow:0 20px 60px -20px rgba(255,33,33,.6)}
 .ticker.two{background:#111;transform:rotate(1.5deg) scale(1.04);margin-top:-46px;z-index:2;opacity:.9}
 .ticker .row{display:flex;width:max-content;animation:tick 32s linear infinite}
@@ -143,78 +198,79 @@ body.go .lbx.b{transform:translateY(100%)}
 .ticker.two span::after{background:var(--red)}
 @keyframes tick{to{transform:translateX(-50%)}}
 
-/* ===== intro ===== */
-.intro{padding:clamp(110px,16vw,200px) 0 clamp(80px,10vw,140px);position:relative}
+/* intro */
+.intro{padding:clamp(110px,16vw,200px) 0 clamp(80px,10vw,140px)}
 .intro-g{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,6vw,90px);align-items:center}
 .intro .h2{margin:22px 0 28px}
 .intro p{color:#c9c9d3;max-width:560px;font-size:clamp(16px,1.5vw,18px)}
 .intro p+p{margin-top:16px}
-.intro .q{font:800 italic clamp(18px,2vw,24px)/1.2 var(--cond);color:var(--ink);text-transform:uppercase;letter-spacing:.04em;margin-top:30px;padding-left:18px;border-left:3px solid var(--red)}
+.intro .q{font:800 italic clamp(18px,2vw,24px)/1.2 var(--cond);text-transform:uppercase;letter-spacing:.04em;margin-top:30px;padding-left:18px;border-left:3px solid var(--red)}
 .ecu{position:relative;perspective:1000px}
 .ecu .card{position:relative;border-radius:6px;overflow:hidden;transform-style:preserve-3d;transition:transform .2s ease-out;box-shadow:0 50px 100px -30px rgba(0,0,0,.9),0 0 0 1px var(--line)}
 .ecu .card img{width:100%;aspect-ratio:4/3.4;object-fit:cover;filter:contrast(1.08)}
 .ecu .card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 60%);background-size:250% 100%;background-position:var(--gx,100%) 0;mix-blend-mode:overlay;pointer-events:none}
 .ecu .tag{position:absolute;left:-14px;bottom:28px;z-index:2;background:var(--bg);border:1px solid var(--line);padding:14px 18px;font:600 11px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.ecu .tag b{display:block;font:400 30px/1 var(--disp);color:var(--ink);letter-spacing:.02em}
+.ecu .tag b{display:block;font:400 30px/1 var(--disp);color:var(--ink)}
 .ecu .scan{position:absolute;left:0;right:0;height:2px;top:0;background:var(--cyan);box-shadow:0 0 20px 4px rgba(56,225,255,.6);animation:scan 3.2s ease-in-out infinite;z-index:2;opacity:.8}
 @keyframes scan{0%,100%{top:4%}50%{top:94%}}
 @media(max-width:860px){.intro-g{grid-template-columns:1fr}.ecu{order:-1}.ecu .tag{left:10px}}
-
-/* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(70px,9vw,120px)}
 .stats>div{padding:30px 22px;border-right:1px solid var(--line)}
 .stats>div:last-child{border-right:0}
-.stats b{display:block;font:400 clamp(40px,5vw,68px)/1 var(--disp);letter-spacing:.01em}
+.stats b{display:block;font:400 clamp(40px,5vw,68px)/1 var(--disp)}
 .stats b small{font-size:.5em;color:var(--amber);margin-left:4px}
 .stats>div>span{font:600 12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);display:block;margin-top:10px}
 @media(max-width:860px){.stats{grid-template-columns:1fr 1fr}.stats>div:nth-child(2){border-right:0}.stats>div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 
-/* ===== services (horizontal) ===== */
+/* services */
 .svc{position:relative;background:var(--bg2);overflow:hidden;border-top:1px solid var(--line)}
 .svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;padding-top:clamp(80px,9vw,120px);padding-bottom:40px}
 .gear{font:700 12px var(--mono);letter-spacing:.2em;color:var(--mute);text-align:right;min-width:220px}
-.gear .n{display:block;font:400 74px/1 var(--disp);color:var(--ink);letter-spacing:0}
-.gear .n i{font-style:normal;color:var(--red)}
+.gear .n{display:flex;justify-content:flex-end;font:400 74px/1 var(--disp);color:var(--ink);overflow:hidden}
+.gear .n i{font-style:normal;color:var(--red);display:inline-block}
 .rpmbar{height:4px;background:#1c1c24;margin-top:12px;position:relative;overflow:hidden}
 .rpmbar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(.08);background:linear-gradient(90deg,var(--cyan),var(--amber) 60%,var(--red))}
 .svc-track{display:flex;gap:22px;padding:0 max(16px,calc((100vw - 1240px)/2)) clamp(80px,9vw,120px);width:max-content;will-change:transform}
-.sc{position:relative;width:min(400px,78vw);flex:none;background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
+.sc{position:relative;width:min(400px,78vw);flex:none;background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s}
+.sc::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(380px circle at var(--mx,-200px) var(--my,-200px),rgba(255,40,40,.16),transparent 45%)}
 .sc:hover{border-color:rgba(255,33,33,.5)}
 .sc .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000}
 .sc .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.1) brightness(.85);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
-.sc:hover .ph img{transform:scale(1.07);filter:grayscale(0) contrast(1.1) brightness(1)}
+.sc:hover .ph img{transform:scale(1.07);filter:none}
 .sc .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--panel))}
 .sc .num{position:absolute;top:12px;left:14px;z-index:2;font:400 64px/1 var(--disp);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.75)}
 .sc .real{position:absolute;top:16px;right:14px;z-index:2;font:700 10px var(--mono);letter-spacing:.16em;background:var(--red);color:#fff;padding:5px 8px;text-transform:uppercase}
-.sc .tx{padding:6px 24px 28px;flex:1;display:flex;flex-direction:column}
-.sc h3{font:800 italic 30px/1 var(--cond);text-transform:uppercase;letter-spacing:.01em;margin-bottom:12px}
+.sc .tx{padding:6px 24px 28px;flex:1}
+.sc h3{font:800 italic 30px/1 var(--cond);text-transform:uppercase;margin-bottom:12px}
 .sc p{color:#b7b7c2;font-size:15px;line-height:1.55}
 .sc.big{width:min(560px,86vw)}
 .sc.hot{background:linear-gradient(160deg,#2a0606,#120507 60%);border-color:rgba(255,33,33,.35)}
-.tire{position:absolute;left:0;right:0;bottom:30px;height:220px;pointer-events:none;opacity:.25}
-.svc-cta{flex:none;width:min(420px,80vw);display:flex;flex-direction:column;justify-content:center;gap:22px;padding:30px}
+.tire{position:absolute;left:0;width:200%;bottom:30px;height:220px;pointer-events:none;opacity:.22}
+.svc-cta{flex:none;width:min(420px,80vw);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:22px;padding:30px}
 .svc-cta .h2{font-size:clamp(44px,5vw,72px)}
+.swipe{display:none;align-items:center;gap:8px;font:600 11px var(--mono);letter-spacing:.2em;color:var(--mute);margin-top:12px;text-transform:uppercase}
 @media(max-width:899px),(prefers-reduced-motion:reduce){
   .svc-track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:70px}
   .svc-track::-webkit-scrollbar{display:none}
   .sc,.svc-cta{scroll-snap-align:center}
   .svc-head{flex-direction:column;align-items:flex-start}
   .gear{text-align:left;min-width:0;width:100%}
-  .gear .n{font-size:54px}
-  .swipe{display:inline-flex!important}
+  .gear .n{justify-content:flex-start;font-size:54px}
+  .swipe{display:inline-flex}
 }
-.swipe{display:none;align-items:center;gap:8px;font:600 11px var(--mono);letter-spacing:.2em;color:var(--mute);margin-top:12px;text-transform:uppercase}
 
-/* ===== check engine ===== */
+/* check engine */
 .ce{padding:clamp(100px,12vw,170px) 0;position:relative;overflow:hidden}
 .ce-g{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,6vw,80px);align-items:center}
 .dash{position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin:auto;border-radius:50%;background:radial-gradient(circle at 50% 45%,#16161d 0,#0a0a0e 60%,#050507 100%);box-shadow:inset 0 0 0 10px #121218,inset 0 0 0 12px #2a2a33,inset 0 0 80px rgba(0,0,0,.9),0 40px 120px -40px rgba(255,179,0,.25)}
-.dash svg{position:absolute;inset:0;width:100%;height:100%}
-.dash .eng{position:absolute;left:50%;top:56%;width:34%;transform:translate(-50%,-50%);color:#3a2a00;transition:color .2s,filter .2s}
-.dash.lit .eng{color:var(--amber);filter:drop-shadow(0 0 16px rgba(255,179,0,.9)) drop-shadow(0 0 40px rgba(255,140,0,.6))}
+.dash>svg:first-child{position:absolute;inset:0;width:100%;height:100%}
+.dash .eng{position:absolute;left:50%;top:66%;width:24%;transform:translate(-50%,-50%);color:#3a2a00;transition:color .2s}
+.dash.lit .eng{color:var(--amber);filter:drop-shadow(0 0 14px rgba(255,179,0,.9))}
 .dash.blink .eng{animation:ceb .55s steps(2,start) infinite}
 @keyframes ceb{0%{color:var(--amber);filter:drop-shadow(0 0 18px rgba(255,179,0,1))}100%{color:#3a2a00;filter:none}}
-.dash .lbl{position:absolute;left:0;right:0;top:74%;text-align:center;font:700 11px var(--mono);letter-spacing:.3em;color:var(--mute)}
+.dash .lbl{position:absolute;left:0;right:0;top:78%;text-align:center;font:700 11px var(--mono);letter-spacing:.3em;color:var(--mute)}
+.dash .drpm{position:absolute;left:0;right:0;top:34%;text-align:center;font:400 30px/1 var(--disp);color:#fff}
+.dash .drpm small{display:block;font:700 9px var(--mono);letter-spacing:.3em;color:var(--mute);margin-top:4px}
 .ce .h2{margin:20px 0 22px}
 .tog{display:inline-flex;border:1px solid var(--line);padding:4px;gap:4px;margin:6px 0 26px;background:var(--panel)}
 .tog button{font:800 14px var(--cond);letter-spacing:.16em;text-transform:uppercase;padding:12px 20px;color:var(--mute);transition:background .2s,color .2s}
@@ -225,32 +281,32 @@ body.go .lbx.b{transform:translateY(100%)}
 .steps li b{color:var(--ink);display:block;font-weight:600;margin-bottom:2px}
 .steps[hidden]{display:none}
 .src{font:600 11px var(--mono);letter-spacing:.12em;color:var(--mute);margin-top:18px;text-transform:uppercase}
+.earhint{display:none;margin-top:14px;font:700 11px var(--mono);letter-spacing:.16em;color:var(--amber);text-transform:uppercase}
+.snd-on .earhint{display:block}
 @media(max-width:860px){.ce-g{grid-template-columns:1fr}.dash{max-width:330px}}
 
-/* ===== gallery ===== */
+/* gallery */
 .gal{padding:clamp(90px,10vw,140px) 0;background:var(--bg2);border-top:1px solid var(--line)}
 .gal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
 .brands{font:800 italic clamp(16px,1.8vw,22px)/1.3 var(--cond);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);max-width:520px}
 .brands b{color:var(--ink)}
 .bento{display:grid;grid-auto-flow:dense;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(110px,11vw,150px);gap:12px}
 .bento button{position:relative;overflow:hidden;border-radius:3px;background:#000;grid-column:span 4;grid-row:span 2}
-.bento button img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .5s;filter:contrast(1.06) saturate(1.05)}
+.bento button img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1);filter:contrast(1.06) saturate(1.05)}
 .bento button:hover img{transform:scale(1.06)}
-.bento button::after{content:attr(data-c);position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;text-align:left;font:800 italic 17px/1.1 var(--cond);letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(transparent,rgba(0,0,0,.85));opacity:.95}
-.bento .w8{grid-column:span 8}.bento .w12{grid-column:span 12}.bento .w6{grid-column:span 6}.bento .t3{grid-row:span 3}.bento .t4{grid-row:span 4}
-.js .bento button{clip-path:inset(0 0 100% 0)}
-.js .bento button.in{clip-path:inset(0 0 0 0);transition:clip-path 1.1s cubic-bezier(.77,0,.18,1)}
-@media(max-width:860px){.bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.bento button,.bento .w6,.bento .w8,.bento .w12{grid-column:span 1;grid-row:span 1}.bento .wide{grid-column:span 2}.bento .t3,.bento .t4{grid-row:span 2}}
-
-/* lightbox */
+.bento button::after{content:attr(data-c);position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;text-align:left;font:800 italic 17px/1.1 var(--cond);letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.bento .w8{grid-column:span 8}.bento .w6{grid-column:span 6}.bento .w12{grid-column:span 12}.bento .t3{grid-row:span 3}
+.mk .bento button{clip-path:inset(0 0 100% 0)}
+.mk .bento button.in{clip-path:inset(0 0 0 0);transition:clip-path 1.1s var(--ease)}
+@media(max-width:860px){.bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.bento button,.bento .w6,.bento .w8,.bento .w12{grid-column:span 1;grid-row:span 1}.bento .wide{grid-column:span 2}.bento .t3{grid-row:span 2}}
 .lb{position:fixed;inset:0;z-index:150;background:rgba(3,3,4,.95);display:none;align-items:center;justify-content:center;padding:60px 16px}
 .lb.on{display:flex}
-.lb img{max-width:min(1200px,100%);max-height:100%;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb img{max-width:min(1200px,100%);max-height:100%;object-fit:contain}
 .lb .x,.lb .pv,.lb .nx{position:absolute;width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.05);font-size:24px}
 .lb .x{top:14px;right:14px}.lb .pv{left:14px;top:50%;transform:translateY(-50%)}.lb .nx{right:14px;top:50%;transform:translateY(-50%)}
 .lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;font:800 italic 16px var(--cond);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 
-/* ===== reviews ===== */
+/* reviews */
 .rev{padding:clamp(100px,12vw,160px) 0}
 .rev-g{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,80px);align-items:start}
 .score{position:sticky;top:110px}
@@ -261,20 +317,19 @@ body.go .lbx.b{transform:translateY(100%)}
 .quotes{display:grid;gap:16px}
 .qt{padding:30px 30px 26px;background:var(--panel);border:1px solid var(--line);position:relative}
 .qt::before{content:"\201C";position:absolute;top:-6px;right:22px;font:400 110px/1 var(--disp);color:rgba(255,33,33,.25)}
-.qt blockquote{font:600 italic clamp(22px,2.4vw,30px)/1.15 var(--cond);text-transform:uppercase;letter-spacing:.01em}
+.qt blockquote{font:600 italic clamp(22px,2.4vw,30px)/1.15 var(--cond);text-transform:uppercase}
 .qt cite{display:block;margin-top:14px;font:600 11.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-style:normal}
 @media(max-width:860px){.rev-g{grid-template-columns:1fr}.score{position:static}}
 
-/* ===== contact ===== */
-.ct{position:relative;padding:clamp(100px,12vw,170px) 0 60px;overflow:hidden;border-top:1px solid var(--line)}
-.ct-bg{position:absolute;inset:0;background:url(/muestras/mktronic/img/fachada.jpg) center 40%/cover;filter:grayscale(.4) brightness(.28) contrast(1.1);z-index:-1}
+/* contact */
+.ct{position:relative;padding:clamp(100px,12vw,170px) 0 60px;overflow:hidden;border-top:1px solid var(--line);isolation:isolate}
+.ct-bg{position:absolute;inset:0;background:url(/muestras/mktronic/img/fachada.jpg) center 40%/cover;filter:grayscale(.4) brightness(.28) contrast(1.1);z-index:-2}
 .ct::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--bg) 0,rgba(6,6,8,.55) 40%,var(--bg) 100%)}
 .ct .h2{font-size:clamp(56px,10vw,150px);margin:20px 0 34px}
 .ct-g{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:60px}
 .box{background:rgba(17,17,23,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);padding:28px}
 .box h4{font:700 12px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
-.box p,.box a{font-size:17px}
-.box .tel{display:block;font:400 34px/1.15 var(--disp);letter-spacing:.02em;transition:color .2s}
+.box .tel{display:block;font:400 34px/1.15 var(--disp);transition:color .2s}
 .box .tel:hover{color:var(--red)}
 .box small{display:block;color:var(--mute);font-size:13px;margin-top:4px}
 .hrs{list-style:none;display:grid;gap:2px;font:500 14px var(--mono)}
@@ -285,248 +340,255 @@ body.go .lbx.b{transform:translateY(100%)}
 .map{grid-column:1/-1;height:380px;padding:0;overflow:hidden;position:relative}
 .map iframe{width:100%;height:100%;border:0;filter:invert(.92) hue-rotate(180deg) saturate(.6) contrast(.95)}
 .map .go{position:absolute;right:16px;bottom:16px}
-.ship{display:flex;align-items:center;gap:16px;font:800 italic clamp(18px,2vw,24px)/1.2 var(--cond);letter-spacing:.06em;text-transform:uppercase}
+.ship{grid-column:1/-1;display:flex;align-items:center;gap:16px;font:800 italic clamp(18px,2vw,24px)/1.2 var(--cond);letter-spacing:.06em;text-transform:uppercase}
 .ship svg{width:42px;height:42px;color:var(--red);flex:none}
 @media(max-width:760px){.ct-g{grid-template-columns:1fr}.map{height:320px}}
 
 /* footer */
-footer{border-top:1px solid var(--line);padding:46px 0 120px;background:#030304}
+footer{border-top:1px solid var(--line);padding:46px 0 130px;background:#030304}
+.giant{font:400 clamp(80px,21vw,330px)/.82 var(--disp);text-align:center;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.18);background:linear-gradient(90deg,var(--red) 0 var(--fill,0%),transparent var(--fill,0%));-webkit-background-clip:text;background-clip:text;margin:10px 0 50px;user-select:none}
 .ft{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .ft img{height:54px;width:auto}
 .soc{display:flex;gap:10px}
 .soc a{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);transition:background .2s,border-color .2s}
 .soc a:hover{background:var(--red);border-color:var(--red)}
 .soc svg{width:20px;height:20px}
-.demo{margin-top:40px;padding:18px 20px;border:1px dashed rgba(255,179,0,.5);color:#e9d6a8;font:500 13px/1.6 var(--mono);letter-spacing:.04em}
+.demo{margin-top:40px;padding:18px 20px;border:1px dashed rgba(255,179,0,.5);color:#e9d6a8;font:500 13px/1.6 var(--mono)}
 .demo b{color:var(--amber);letter-spacing:.2em}
+.demo a{text-decoration:underline}
 .copy{margin-top:20px;font:500 12px var(--mono);color:#666}
 
-/* floating WA */
 .fab{position:fixed;right:18px;bottom:18px;z-index:85;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -6px rgba(37,211,102,.7);transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
 .fab.on{transform:scale(1)}
 .fab svg{width:32px;height:32px;color:#fff}
 
-/* reveal */
-.js [data-rv]{opacity:0;transform:translateY(44px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.js [data-rv].in{opacity:1;transform:none}
+.mk [data-rv]{opacity:0;transform:translateY(44px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.mk [data-rv].in{opacity:1;transform:none}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
-  .grain,#smoke,.streaks{display:none}
+  .grain,#smoke,.vlines,.flare{display:none}
   .dash.blink .eng{animation:none;color:var(--amber)}
 }
 </style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
+<div class="cur-r" aria-hidden="true"></div><div class="cur-d" aria-hidden="true"></div>
+<div class="vlines" id="vlines" aria-hidden="true"></div>
 
-<!-- LOADER: tacómetro -->
-<div class="loader" aria-hidden="true">
+<!-- GATE: push to start -->
+<div class="gate" id="gate">
   <div class="cur t"></div><div class="cur b"></div>
-  <div class="tach">
+  <div class="gate-in">
+    <img class="glogo" src="/muestras/mktronic/img/logo-dark.png" alt="MKTronic">
+    <button type="button" class="start" id="start" aria-label="Engine start" aria-describedby="ghint"><span><b>ENGINE<br>START</b><small>STOP</small></span></button>
+    <p class="ghint" id="ghint" data-i18n="gate.hint">Presiona para arrancar · con sonido</p>
+    <div class="glang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">Español</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+    <button type="button" class="mute-enter" id="enterMuted" data-i18n="gate.muted">Entrar sin sonido</button>
+  </div>
+  <div class="tach" aria-hidden="true">
     <div class="shift" id="shift"><i></i><i></i><i class="y"></i><i class="y"></i><i class="rd"></i><i class="rd"></i></div>
-    <svg viewBox="0 0 300 300" id="tachsvg">
+    <svg viewBox="0 0 300 300">
       <circle cx="150" cy="150" r="128" fill="none" stroke="#15151b" stroke-width="2"/>
       <g id="ticks"></g>
       <g id="needle" style="transform-origin:150px 150px;transform:rotate(-135deg)">
-        <line x1="150" y1="150" x2="150" y2="40" stroke="#ff2121" stroke-width="4" stroke-linecap="round"/>
+        <line x1="150" y1="150" x2="150" y2="38" stroke="#ff2121" stroke-width="4" stroke-linecap="round"/>
         <line x1="150" y1="150" x2="150" y2="172" stroke="#ff2121" stroke-width="4" stroke-linecap="round"/>
       </g>
       <circle cx="150" cy="150" r="12" fill="#0b0b0f" stroke="#2a2a33" stroke-width="3"/>
     </svg>
-    <div class="rpm"><b id="rpmv">0</b>RPM ×1000</div>
-    <img class="lg" src="/muestras/mktronic/img/logo-dark.png" alt="">
+    <div class="rpm"><b id="rpmv">0.0</b>RPM ×1000</div>
   </div>
 </div>
 
-<!-- NAV -->
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="MKTronic inicio"><img src="/muestras/mktronic/img/logo-dark.png" alt="MKTronic Multiservicios Automotrices" width="480" height="305"></a>
+    <a class="brand" href="#top" aria-label="MKTronic"><img src="/muestras/mktronic/img/logo-dark.png" alt="MKTronic Multiservicios Automotrices" width="520" height="330"></a>
     <ul>
-      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#servicios" data-i18n="nav.svc">Servicios</a></li>
       <li><a href="#check">Check Engine</a></li>
-      <li><a href="#taller">Taller</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#taller" data-i18n="nav.shop">Taller</a></li>
+      <li><a href="#contacto" data-i18n="nav.ct">Contacto</a></li>
     </ul>
-    <a class="btn btn-red wa" href="https://wa.me/523223181218?text=Hola%20MKTronic%2C%20quiero%20cotizar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg><span>Cotiza</span></a>
+    <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+    <button type="button" class="snd" id="snd" aria-pressed="false" aria-label="Sonido / Sound"><i></i><i></i><i></i><i></i></button>
+    <a class="btn btn-red wa" data-wa="q" href="https://wa.me/523223181218" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8z"/></svg><span data-i18n="nav.quote">Cotiza</span></a>
   </div>
 </header>
 
 <main id="top">
-<!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
   <i class="lbx t" aria-hidden="true"></i><i class="lbx b" aria-hidden="true"></i>
   <div class="hero-bg" id="herobg"></div>
+  <div class="hero-shade"></div>
   <canvas id="smoke" aria-hidden="true"></canvas>
-  <div class="streaks" aria-hidden="true" id="streaks"></div>
+  <div class="flare" aria-hidden="true"></div>
   <div class="hero-in wrap">
     <div class="kick">El Pitillal · Puerto Vallarta</div>
     <h1 id="h1">
-      <span class="ln"><span>Especialistas</span></span>
-      <span class="ln"><span class="out">en programación</span></span>
-      <span class="ln"><span class="r">automotriz</span></span>
+      <span class="ln"><span data-i18n="h.l1">Especialistas</span></span>
+      <span class="ln"><span class="out" data-i18n="h.l2">en programación</span></span>
+      <span class="ln"><span class="r" data-i18n="h.l3">automotriz</span></span>
     </h1>
-    <p class="lead">Computadoras y módulos probados, listos para funcionar en tu vehículo de media o alta gama. Compra con seguridad y respaldo profesional.</p>
+    <p class="lead" data-i18n="h.lead">Computadoras y módulos probados, listos para funcionar en tu vehículo de media o alta gama. Compra con seguridad y respaldo profesional.</p>
     <div class="ctas">
-      <a class="btn btn-red wa" href="https://wa.me/523223181218?text=Hola%20MKTronic%2C%20quiero%20cotizar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8z"/></svg>Cotiza en WhatsApp</a>
-      <a class="btn btn-ghost" href="#servicios">Ver servicios →</a>
+      <a class="btn btn-red wa" data-wa="q" href="https://wa.me/523223181218" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8z"/></svg><span data-i18n="cta.wa">Cotiza en WhatsApp</span></a>
+      <a class="btn btn-ghost" href="#servicios" data-i18n="cta.svc">Ver servicios →</a>
     </div>
     <div class="hud">
-      <div class="st"><i class="dot" id="dot"></i><span id="status">Horario</span></div>
-      <div><span class="star">★ 4.5</span> en Google · 34 opiniones</div>
-      <div>Envíos seguros a todo México</div>
+      <div class="st"><i class="dot" id="dot"></i><span id="status">—</span></div>
+      <div><span class="star">★ 4.5</span> <span data-i18n="hud.g">en Google · 34 opiniones</span></div>
+      <div data-i18n="ship">Envíos seguros a todo México</div>
     </div>
   </div>
-  <div class="scroll-cue">SCROLL</div>
 </section>
 
 <div class="ticker" aria-hidden="true"><div class="row" id="tk1"></div></div>
 <div class="ticker two" aria-hidden="true"><div class="row" id="tk2"></div></div>
 
-<!-- INTRO -->
 <section class="intro">
   <div class="wrap">
     <div class="intro-g">
       <div>
-        <div class="kick" data-rv>Computadoras automotrices (ECU)</div>
-        <h2 class="h2" data-rv>¿Necesitas una <span class="r">computadora</span> <em>automotriz</em> confiable?</h2>
-        <p data-rv>En MKTronic ofrecemos computadoras y módulos probados, listos para funcionar en tu vehículo de media o alta gama.</p>
-        <p data-rv>Compra con seguridad y respaldo profesional, evitando sorpresas o reemplazos innecesarios.</p>
-        <div class="q" data-rv>Cotiza la tuya hoy y mantén tu auto funcionando como debe.</div>
+        <div class="kick" data-rv data-i18n="in.kick">Computadoras automotrices (ECU)</div>
+        <h2 class="h2" data-rv data-i18n="in.h">¿Necesitas una <span class="r">computadora</span> <em>automotriz</em> confiable?</h2>
+        <p data-rv data-i18n="in.p1">En MKTronic ofrecemos computadoras y módulos probados, listos para funcionar en tu vehículo de media o alta gama.</p>
+        <p data-rv data-i18n="in.p2">Compra con seguridad y respaldo profesional, evitando sorpresas o reemplazos innecesarios.</p>
+        <div class="q" data-rv data-i18n="in.q">Cotiza la tuya hoy y mantén tu auto funcionando como debe.</div>
       </div>
       <div class="ecu" data-rv>
         <div class="card" id="tilt">
           <div class="scan"></div>
-          <img src="/muestras/mktronic/img/banco.jpg" alt="Banco de pruebas para simular computadoras automotrices en MKTronic" loading="lazy" width="1100" height="489" style="aspect-ratio:4/3.4">
+          <img src="/muestras/mktronic/img/banco.jpg" alt="" loading="lazy" width="1100" height="489">
         </div>
-        <div class="tag"><b>Banco de pruebas</b>Simulación de ECU</div>
+        <div class="tag"><b data-i18n="in.tag">Banco de pruebas</b><span data-i18n="in.tag2">Simulación de ECU</span></div>
       </div>
     </div>
     <div class="stats" data-rv>
-      <div><b><span class="cnt" data-to="4.5" data-dec="1">0</span><small>★</small></b><span>Google · 34 opiniones</span></div>
-      <div><b><span class="cnt" data-to="12">0</span></b><span>Servicios especializados</span></div>
-      <div><b>MX</b><span>Envíos seguros a todo México</span></div>
-      <div><b><span class="cnt" data-to="1.2" data-dec="1">0</span><small>mil</small></b><span>Seguidores en Facebook</span></div>
+      <div><b><span class="cnt" data-to="4.5" data-dec="1">0</span><small>★</small></b><span data-i18n="st.1">Google · 34 opiniones</span></div>
+      <div><b><span class="cnt" data-to="12">0</span></b><span data-i18n="st.2">Servicios especializados</span></div>
+      <div><b>MX</b><span data-i18n="ship">Envíos seguros a todo México</span></div>
+      <div><b><span class="cnt" data-to="1.2" data-dec="1">0</span><small data-i18n="st.k">mil</small></b><span data-i18n="st.4">Seguidores en Facebook</span></div>
     </div>
   </div>
 </section>
 
-<!-- SERVICIOS -->
 <section class="svc" id="servicios">
   <div class="wrap svc-head">
     <div>
-      <div class="kick">Nuestros servicios</div>
-      <h2 class="h2" style="margin-top:18px">Doce <span class="r">marchas</span><br><em>bajo el cofre</em></h2>
-      <div class="swipe">Desliza →</div>
+      <div class="kick" data-i18n="sv.kick">Nuestros servicios</div>
+      <h2 class="h2" style="margin-top:18px" data-i18n="sv.h">Doce <span class="r">marchas</span><br><em>bajo el cofre</em></h2>
+      <div class="swipe" data-i18n="sv.swipe">Desliza →</div>
     </div>
-    <div class="gear">MARCHA<span class="n"><i id="gn">01</i>/12</span><div class="rpmbar"><i id="rb"></i></div></div>
+    <div class="gear"><span data-i18n="sv.gear">MARCHA</span><span class="n"><i id="gn">01</i>/12</span><div class="rpmbar"><i id="rb"></i></div></div>
   </div>
-  <svg class="tire" viewBox="0 0 2400 220" preserveAspectRatio="none" aria-hidden="true">
-    <path id="tr1" d="M0,170 C300,170 420,40 760,60 S1200,190 1560,150 S2100,30 2400,60" fill="none" stroke="#fff" stroke-width="18" stroke-dasharray="6 7"/>
-    <path id="tr2" d="M0,200 C300,200 420,70 760,90 S1200,220 1560,180 S2100,60 2400,90" fill="none" stroke="#fff" stroke-width="18" stroke-dasharray="6 7"/>
+  <svg class="tire" id="tire" viewBox="0 0 2400 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,170 C300,170 420,40 760,60 S1200,190 1560,150 S2100,30 2400,60" fill="none" stroke="#fff" stroke-width="18" stroke-dasharray="6 7"/>
+    <path d="M0,200 C300,200 420,70 760,90 S1200,220 1560,180 S2100,60 2400,90" fill="none" stroke="#fff" stroke-width="18" stroke-dasharray="6 7"/>
   </svg>
   <div class="svc-track" id="track"></div>
 </section>
 
-<!-- CHECK ENGINE -->
 <section class="ce" id="check">
   <div class="wrap ce-g">
     <div class="dash lit" id="dash" data-rv>
       <svg viewBox="0 0 400 400" aria-hidden="true">
         <g id="dticks"></g>
-        <text x="200" y="128" text-anchor="middle" fill="#666" font-family="JetBrains Mono" font-size="12" letter-spacing="3">x1000 r/min</text>
+        <g id="dneedle" style="transform-origin:200px 200px;transform:rotate(-135deg)">
+          <line x1="200" y1="200" x2="200" y2="62" stroke="#ff2121" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <circle cx="200" cy="200" r="14" fill="#0b0b0f" stroke="#2a2a33" stroke-width="3"/>
       </svg>
+      <div class="drpm"><span id="drpm">850</span><small>RPM</small></div>
       <svg class="eng" viewBox="0 0 64 44" fill="currentColor" aria-hidden="true"><path d="M18 4h16v5h-5v4h9l5 5h6v-5h5v20h-5v-5h-6v8l-6 6H20l-6-6v-3H9v6H4V17h5v6h5v-7l3-3h8V9h-7z"/></svg>
       <div class="lbl">CHECK ENGINE</div>
     </div>
     <div>
-      <div class="kick" data-rv>Consejo MKTronic</div>
-      <h2 class="h2" data-rv>¿Tu Check Engine está <span class="r">parpadeando?</span></h2>
-      <p style="color:#c9c9d3;max-width:520px" data-rv>Fíjate con el motor encendido. Toca para ver la diferencia:</p>
-      <div class="tog" role="group" aria-label="Estado de la luz" data-rv>
-        <button type="button" aria-pressed="true" data-m="fija">Fija</button>
-        <button type="button" aria-pressed="false" data-m="blink">Parpadeando</button>
+      <div class="kick" data-rv data-i18n="ce.kick">Consejo MKTronic</div>
+      <h2 class="h2" data-rv data-i18n="ce.h">¿Tu Check Engine está <span class="r">parpadeando?</span></h2>
+      <p style="color:#c9c9d3;max-width:520px" data-rv data-i18n="ce.p">Fíjate con el motor encendido. Toca para ver la diferencia:</p>
+      <div class="tog" role="group" data-rv>
+        <button type="button" aria-pressed="true" data-m="fija" data-i18n="ce.fija">Fija</button>
+        <button type="button" aria-pressed="false" data-m="blink" data-i18n="ce.blink">Parpadeando</button>
       </div>
       <ol class="steps" id="st-fija" data-rv>
-        <li><b>Fija</b>La luz permanece encendida.</li>
+        <li data-i18n="ce.f1"><b>Fija</b>La luz permanece encendida.</li>
       </ol>
       <ol class="steps" id="st-blink" hidden>
-        <li><b>Si parpadea, reduce la velocidad suavemente.</b>Evita acelerones y busca un lugar seguro para detenerte si continúa.</li>
-        <li><b>¿Dejó de parpadear al bajar la velocidad?</b>No aceleres para “probarlo”. Solicita una revisión, aunque vuelva a sentirse normal.</li>
-        <li><b>¿El carro también tiembla, da jalones o pierde fuerza?</b>Detente en un lugar seguro y pide asistencia. No lo fuerces para llegar al taller.</li>
-        <li><b>Cuéntale al técnico qué pasó.</b>¿Fue al acelerar, en una subida o con el motor frío? ¿Hubo jaloneos o pérdida de fuerza? Esos detalles ayudan a orientar el diagnóstico.</li>
+        <li data-i18n="ce.b1"></li><li data-i18n="ce.b2"></li><li data-i18n="ce.b3"></li><li data-i18n="ce.b4"></li>
       </ol>
-      <div class="src" data-rv>Consejo publicado por MKTronic en su Facebook</div>
-      <a class="btn btn-red wa" style="margin-top:26px" href="https://wa.me/523223181218?text=Hola%20MKTronic%2C%20se%20me%20prendi%C3%B3%20el%20Check%20Engine" target="_blank" rel="noopener" data-rv>Pide tu escaneo por WhatsApp</a>
+      <div class="earhint" data-i18n="ce.ear">🔊 Toca “Parpadeando” y escucha al motor fallar</div>
+      <div class="src" data-rv data-i18n="ce.src">Consejo publicado por MKTronic en su Facebook</div>
+      <a class="btn btn-red wa" data-wa="ce" style="margin-top:26px" href="https://wa.me/523223181218" target="_blank" rel="noopener" data-rv data-i18n="ce.cta">Pide tu escaneo por WhatsApp</a>
     </div>
   </div>
 </section>
 
-<!-- GALERIA -->
 <section class="gal" id="taller">
   <div class="wrap">
     <div class="gal-head">
       <div>
-        <div class="kick" data-rv>Trabajos reales</div>
-        <h2 class="h2" style="margin-top:18px" data-rv>En el <span class="r">taller</span></h2>
+        <div class="kick" data-rv data-i18n="ga.kick">Trabajos reales</div>
+        <h2 class="h2" style="margin-top:18px" data-rv data-i18n="ga.h">En el <span class="r">taller</span></h2>
       </div>
-      <p class="brands" data-rv>Han pasado por aquí: <b>Porsche · Mercedes-Benz · BMW · Mini · Nissan · Kia</b></p>
+      <p class="brands" data-rv><span data-i18n="ga.br">Han pasado por aquí:</span> <b>Porsche · Mercedes-Benz · BMW · Mini · Nissan · Kia</b></p>
     </div>
     <div class="bento" id="bento"></div>
   </div>
 </section>
 
-<!-- OPINIONES -->
 <section class="rev">
   <div class="wrap rev-g">
     <div class="score">
-      <div class="kick">Opiniones en Google</div>
+      <div class="kick" data-i18n="rv.kick">Opiniones en Google</div>
       <div class="big"><span class="cnt" data-to="4.5" data-dec="1">0</span></div>
-      <div class="stars" aria-label="4.5 de 5 estrellas">★★★★<span class="half">★</span></div>
-      <p>34 opiniones verificadas en Google Maps</p>
-      <a class="btn btn-ghost" href="https://maps.google.com/?cid=12571565448157372399" target="_blank" rel="noopener">Ver en Google →</a>
+      <div class="stars" aria-label="4.5 / 5">★★★★<span class="half">★</span></div>
+      <p data-i18n="rv.p">34 opiniones en Google Maps</p>
+      <a class="btn btn-ghost" href="https://maps.google.com/?cid=12571565448157372399" target="_blank" rel="noopener" data-i18n="rv.btn">Ver en Google →</a>
     </div>
     <div class="quotes">
-      <figure class="qt" data-rv><blockquote>Excelente servicio, me atendieron de inmediato y solucionaron mi problema.</blockquote><cite>Opinión en Google</cite></figure>
-      <figure class="qt" data-rv><blockquote>Muy profesionales y honestos en sus trabajos.</blockquote><cite>Emilio M. · Google</cite></figure>
-      <figure class="qt" data-rv><blockquote>Buena atención, trabajan bien y buenos resultados.</blockquote><cite>Opinión en Google</cite></figure>
-      <figure class="qt" data-rv><blockquote>Muy rápidos y confiables.</blockquote><cite>Opinión en Google</cite></figure>
+      <figure class="qt" data-rv><blockquote data-i18n="q1">Excelente servicio, me atendieron de inmediato y solucionaron mi problema.</blockquote><cite data-i18n="qc">Opinión en Google</cite></figure>
+      <figure class="qt" data-rv><blockquote data-i18n="q2">Muy profesionales y honestos en sus trabajos.</blockquote><cite>Emilio M. · Google</cite></figure>
+      <figure class="qt" data-rv><blockquote data-i18n="q3">Buena atención, trabajan bien y buenos resultados.</blockquote><cite data-i18n="qc">Opinión en Google</cite></figure>
+      <figure class="qt" data-rv><blockquote data-i18n="q4">Muy rápidos y confiables.</blockquote><cite data-i18n="qc">Opinión en Google</cite></figure>
     </div>
   </div>
 </section>
 
-<!-- CONTACTO -->
 <section class="ct" id="contacto">
   <div class="ct-bg"></div>
   <div class="wrap">
-    <div class="kick" data-rv>Contacto</div>
-    <h2 class="h2" data-rv>Arranca <span class="r">hoy.</span></h2>
-    <div class="ctas" style="display:flex;gap:14px;flex-wrap:wrap" data-rv>
-      <a class="btn btn-red wa" href="https://wa.me/523223181218?text=Hola%20MKTronic%2C%20quiero%20cotizar" target="_blank" rel="noopener">Cotiza en WhatsApp</a>
-      <a class="btn btn-ghost" href="tel:+523223181218">Llamar 322 318 1218</a>
+    <div class="kick" data-rv data-i18n="nav.ct">Contacto</div>
+    <h2 class="h2" data-rv data-i18n="ct.h">Arranca <span class="r">hoy.</span></h2>
+    <div class="ctas" data-rv>
+      <a class="btn btn-red wa" data-wa="q" href="https://wa.me/523223181218" target="_blank" rel="noopener" data-i18n="cta.wa">Cotiza en WhatsApp</a>
+      <a class="btn btn-ghost" href="tel:+523223181218" data-i18n="ct.call">Llamar 322 318 1218</a>
     </div>
     <div class="ct-g">
       <div class="box" data-rv>
-        <h4>Teléfonos</h4>
-        <a class="tel" href="tel:+523223181218">322 318 1218</a><small>Llamadas y WhatsApp</small>
-        <a class="tel" style="margin-top:14px" href="tel:+523221467030">322 146 7030</a><small>Llamadas</small>
-        <h4 style="margin-top:26px">Correo</h4>
+        <h4 data-i18n="ct.tels">Teléfonos</h4>
+        <a class="tel" href="tel:+523223181218">322 318 1218</a><small data-i18n="ct.t1">Llamadas y WhatsApp</small>
+        <a class="tel" style="margin-top:14px" href="tel:+523221467030">322 146 7030</a><small data-i18n="ct.t2">Llamadas</small>
+        <h4 style="margin-top:26px" data-i18n="ct.mail">Correo</h4>
         <a href="mailto:mktronic.pv@gmail.com">mktronic.pv@gmail.com</a>
       </div>
       <div class="box" data-rv>
-        <h4>Horario</h4>
+        <h4 data-i18n="ct.hrs">Horario</h4>
         <ul class="hrs" id="hrs"></ul>
-        <h4 style="margin-top:26px">Ubicación</h4>
+        <h4 style="margin-top:26px" data-i18n="ct.loc">Ubicación</h4>
         <p>Calle Veracruz #667, Col. La Floresta, El Pitillal, Puerto Vallarta, Jal.</p>
       </div>
-      <div class="box ship" data-rv style="grid-column:1/-1">
+      <div class="box ship" data-rv>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>
-        Envíos seguros a todo México
+        <span data-i18n="ship">Envíos seguros a todo México</span>
       </div>
       <div class="box map" data-rv>
-        <iframe title="Mapa de MKTronic" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=20.6630497,-105.2180787&z=16&output=embed"></iframe>
-        <a class="btn btn-red go" href="https://www.google.com/maps/dir/?api=1&destination=20.6630497,-105.2180787" target="_blank" rel="noopener">Cómo llegar</a>
+        <iframe title="Mapa MKTronic" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=20.6630497,-105.2180787&z=16&output=embed"></iframe>
+        <a class="btn btn-red go" href="https://www.google.com/maps/dir/?api=1&destination=20.6630497,-105.2180787" target="_blank" rel="noopener" data-i18n="ct.go">Cómo llegar</a>
       </div>
     </div>
   </div>
@@ -534,204 +596,36 @@ footer{border-top:1px solid var(--line);padding:46px 0 120px;background:#030304}
 </main>
 
 <footer>
+  <div class="giant" id="giant" aria-hidden="true">MKTRONIC</div>
   <div class="wrap">
     <div class="ft">
-      <img src="/muestras/mktronic/img/logo-dark.png" alt="MKTronic" width="480" height="305" loading="lazy">
+      <img src="/muestras/mktronic/img/logo-dark.png" alt="MKTronic" width="520" height="330" loading="lazy">
       <div class="soc">
         <a href="https://www.facebook.com/tallermecanicomktronic/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.6V14h2.8v8z"/></svg></a>
         <a href="https://www.tiktok.com/@mktronic_pv" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg></a>
       </div>
     </div>
-    <div class="demo"><b>DEMO / MUESTRA</b> · Propuesta de sitio hecha por <a href="https://vallartaweb.vercel.app" style="text-decoration:underline">VallartaWeb</a> para MKTronic. Datos, opiniones e imágenes tomados de sus canales públicos (sitio, Facebook y Google Maps).</div>
+    <div class="demo" data-i18n="demo"><b>DEMO / MUESTRA</b> · Propuesta de sitio hecha por <a href="https://vallartaweb.vercel.app">VallartaWeb</a> para MKTronic. Datos, opiniones e imágenes tomados de sus canales públicos (sitio, Facebook y Google Maps). Sonidos generados por código.</div>
     <div class="copy">MKTronic Multiservicios Automotrices · Puerto Vallarta, Jalisco</div>
   </div>
 </footer>
 
-<a class="fab wa" id="fab" href="https://wa.me/523223181218?text=Hola%20MKTronic%2C%20quiero%20cotizar" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg></a>
+<div class="rpmhud" id="rpmhud" aria-hidden="true">
+  <svg viewBox="0 0 120 120"><g id="mticks"></g><g id="mneedle" style="transform-origin:60px 60px;transform:rotate(-135deg)"><line x1="60" y1="60" x2="60" y2="16" stroke="#ff2121" stroke-width="2.5" stroke-linecap="round"/></g><circle cx="60" cy="60" r="5" fill="#222"/></svg>
+  <div class="rv"><b id="mrpm">850</b>RPM</div>
+  <div class="hint" id="mhint" data-i18n="hud.hint">Scroll = acelera</div>
+</div>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto ampliada">
-  <button class="x" aria-label="Cerrar">✕</button><button class="pv" aria-label="Anterior">‹</button><button class="nx" aria-label="Siguiente">›</button>
+<a class="fab wa" data-wa="q" id="fab" href="https://wa.me/523223181218" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8z"/></svg></a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="x" aria-label="✕">✕</button><button class="pv" aria-label="‹">‹</button><button class="nx" aria-label="›">›</button>
   <img alt=""><div class="cap"></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-(function(){
-var I='/muestras/mktronic/img/';
-var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
-
-/* ---------- datos (de su sitio) ---------- */
-var SVC=[
- {t:"Venta de computadoras automotrices (ECU)",d:"Contamos con diferentes modelos y compatibilidades para múltiples marcas.",i:"s-ecu",big:1,hot:1},
- {t:"Servicio de programación",d:"Programación y clonación de computadoras, llaves, tableros y kilometraje.",i:"bmw-llave",real:1},
- {t:"Reparación de computadoras",d:"Por fallas comunes, tales como cortos y picos de voltaje. Evaluamos con equipo especializado.",i:"s-reparacion"},
- {t:"Simulación de computadoras",d:"Conectamos tu pieza a un banco de pruebas que reproduce las condiciones del vehículo. Así confirmamos si funciona correctamente y evitamos reemplazarla sin necesidad.",i:"banco",real:1,big:1},
- {t:"Cerrajería automotriz",d:"Vendemos, duplicamos y programamos llaves con chip, controles y smart keys, con equipos especializados para distintas marcas.",i:"porsche-llaves",real:1},
- {t:"Sensores TPMS",d:"Instalamos y programamos sensores de presión de llantas compatibles con el sistema del vehículo. Sincronización precisa.",i:"s-tpms"},
- {t:"Escaneo por computadora",d:"Escaneo automotriz con equipos profesionales para detectar fallas electrónicas, códigos de error y advertencias del tablero.",i:"mercedes-escaner",real:1,big:1},
- {t:"Venta de neumáticos",d:"Neumáticos para diferentes tipos de vehículo y estilo de manejo.",i:"s-llantas"},
- {t:"Mantenimiento preventivo",d:"Revisión de niveles, filtros, frenos, batería y más, para que tu vehículo funcione de forma óptima y segura.",i:"s-mantenimiento"},
- {t:"Servicio completo de suspensión",d:"Inspección, diagnóstico y reemplazo de piezas dañadas: amortiguadores, rótulas, horquillas, bujes y nivelación.",i:"s-suspension"},
- {t:"Tuning / optimización de desempeño",d:"Un aumento en los caballos de fuerza: mejora notable en potencia, eficiencia y respuesta, sin comprometer la seguridad del motor.",i:"s-tuning",hot:1},
- {t:"Inmo Off",d:"Desactivación del inmovilizador desde la computadora (ECU) para que el motor arranque sin la llave codificada original. Útil si se perdió la llave, se cambió la computadora o el inmovilizador está dañado.",i:"s-inmo"}
-];
-var GAL=[
- ["mercedes-escaner","Escaneo · Mercedes-Benz","w8 t3 wide"],
- ["kia-ecu","Reemplazo de computadora · Kia Rio","t3"],
- ["porsche-llaves","Llaves · Porsche","t3"],
- ["mini","Diagnóstico · Mini Cooper","t3"],
- ["bmw-llave","Programación de llave · BMW","t3"],
- ["banco","Banco de pruebas","w6 t2 wide"],
- ["nissan-llave","Llave con chip · Nissan","w6 t2 wide"],
- ["fachada","Calle Veracruz 667 · El Pitillal","w12 t2 wide"]
-];
-var TK1=["Computadoras ECU","Programación","Llaves con chip","Escaneo","Sensores TPMS","Tuning","Inmo Off","Simulación"];
-var TK2=["Envíos a todo México","Smart keys","Kilometraje","Tableros","Suspensión","Neumáticos","Mantenimiento"];
-
-/* ---------- ticker ---------- */
-function fillT(el,a){var h=a.map(function(x){return '<span>'+x+'</span>'}).join('');el.innerHTML=h+h+h+h}
-fillT($('#tk1'),TK1);fillT($('#tk2'),TK2);
-
-/* ---------- servicios ---------- */
-var tr=$('#track'),h='';
-SVC.forEach(function(s,k){
-  var n=(k<9?'0':'')+(k+1);
-  h+='<article class="sc'+(s.big?' big':'')+(s.hot?' hot':'')+'"><div class="ph"><img src="'+I+s.i+'.jpg" alt="'+s.t+'" loading="lazy"><span class="num">'+n+'</span>'+(s.real?'<span class="real">Foto real</span>':'')+'</div><div class="tx"><h3>'+s.t+'</h3><p>'+s.d+'</p></div></article>';
-});
-h+='<div class="svc-cta"><h2 class="h2">¿Cuál <span class="r">necesitas?</span></h2><a class="btn btn-red wa" href="https://wa.me/523223181218?text=Hola%20MKTronic%2C%20quiero%20cotizar" target="_blank" rel="noopener">Cotiza en WhatsApp</a></div>';
-tr.innerHTML=h;
-var gn=$('#gn'),rb=$('#rb');
-function hud(p){var i=Math.min(12,Math.max(1,Math.ceil(p*12)||1));gn.textContent=(i<10?'0':'')+i;rb.style.transform='scaleX('+Math.max(.08,p)+')'}
-
-/* ---------- galería + lightbox ---------- */
-var bento=$('#bento');
-bento.innerHTML=GAL.map(function(g,k){return '<button class="'+g[2]+'" data-k="'+k+'" data-c="'+g[1]+'"><img src="'+I+g[0]+'.jpg" alt="'+g[1]+'" loading="lazy"></button>'}).join('');
-var lb=$('#lb'),li=$('img',lb),lc=$('.cap',lb),cur=0;
-function show(k){cur=(k+GAL.length)%GAL.length;li.src=I+GAL[cur][0]+'.jpg';li.alt=GAL[cur][1];lc.textContent=GAL[cur][1]}
-bento.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;show(+b.dataset.k);lb.classList.add('on');if(window.__lenis)__lenis.stop()});
-function close(){lb.classList.remove('on');if(window.__lenis)__lenis.start()}
-$('.x',lb).onclick=close;$('.pv',lb).onclick=function(){show(cur-1)};$('.nx',lb).onclick=function(){show(cur+1)};
-lb.addEventListener('click',function(e){if(e.target===lb)close()});
-addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
-var sx=0;lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
-lb.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(cur+(d<0?1:-1))});
-
-/* ---------- horario (America/Mexico_City) ---------- */
-var SCHED={0:null,1:[540,1200],2:[540,1200],3:[540,1200],4:[540,1200],5:[540,1200],6:[540,960]};
-var DN=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-function nowMX(){var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Mexico_City',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value});return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday),m:(+o.hour%24)*60+(+o.minute)}}
-function fm(m){var hh=Math.floor(m/60),mm=m%60,ap=hh>=12?'p.m.':'a.m.';hh=hh%12||12;return hh+(mm?':'+(mm<10?'0':'')+mm:'')+' '+ap}
-var n=nowMX(),today=SCHED[n.d],open=today&&n.m>=today[0]&&n.m<today[1];
-$('#dot').className='dot '+(open?'on':'off');
-$('#status').textContent=open?'Abierto · cierra '+fm(today[1]):'Cerrado ahora';
-$('#hrs').innerHTML=[1,2,3,4,5,6,0].map(function(d){var s=SCHED[d];return '<li'+(d===n.d?' class="today"':'')+'><span>'+DN[d]+'</span><span>'+(s?fm(s[0])+' – '+fm(s[1]):'Cerrado')+'</span></li>'}).join('');
-
-/* ---------- check engine ---------- */
-var dash=$('#dash');
-$$('.tog button').forEach(function(b){b.onclick=function(){
-  $$('.tog button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-  var bl=b.dataset.m==='blink';dash.classList.toggle('blink',bl);
-  $('#st-fija').hidden=bl;$('#st-blink').hidden=!bl;
-  if(window.gsap&&!RM)gsap.from('#st-'+(bl?'blink':'fija')+' li',{x:40,opacity:0,stagger:.08,duration:.5,ease:'power3.out'});
-  if(window.ScrollTrigger)ScrollTrigger.refresh();
-}});
-/* ticks del tablero */
-(function(){var g=$('#dticks'),s='';for(var i=0;i<=40;i++){var a=(-225+i*(270/40))*Math.PI/180,big=i%5===0,r1=big?150:160,r2=172,red=i>=30;
- s+='<line x1="'+(200+r1*Math.cos(a)).toFixed(1)+'" y1="'+(200+r1*Math.sin(a)).toFixed(1)+'" x2="'+(200+r2*Math.cos(a)).toFixed(1)+'" y2="'+(200+r2*Math.sin(a)).toFixed(1)+'" stroke="'+(red?'#ff2121':'#555')+'" stroke-width="'+(big?3:1.5)+'"/>';
- if(big)s+='<text x="'+(200+128*Math.cos(a)).toFixed(1)+'" y="'+(205+128*Math.sin(a)).toFixed(1)+'" text-anchor="middle" fill="'+(red?'#ff2121':'#888')+'" font-family="Anton" font-size="22">'+(i/5)+'</text>';}
- g.innerHTML=s})();
-
-/* ---------- tacómetro loader ---------- */
-(function(){var g=$('#ticks'),s='';for(var i=0;i<=32;i++){var a=(-225+i*(270/32))*Math.PI/180,big=i%4===0,r1=big?108:116,red=i>=26;
- s+='<line x1="'+(150+r1*Math.cos(a)).toFixed(1)+'" y1="'+(150+r1*Math.sin(a)).toFixed(1)+'" x2="'+(150+124*Math.cos(a)).toFixed(1)+'" y2="'+(150+124*Math.sin(a)).toFixed(1)+'" stroke="'+(red?'#ff2121':'#3a3a44')+'" stroke-width="'+(big?3:1.5)+'"/>';}
- g.innerHTML=s})();
-var started=false;
-function launch(){if(started)return;started=true;document.body.classList.add('go');setTimeout(function(){document.body.classList.add('gone')},1500);intro()}
-(function(){
-  var nd=$('#needle'),rv=$('#rpmv'),lights=$$('#shift i'),t0=null,D=RM?200:1700;
-  function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=p<.75?Math.pow(p/.75,1.6)*.92:.92+Math.sin((p-.75)/.25*Math.PI*3)*.04;
-    var rpm=e*8;nd.style.transform='rotate('+(-135+e*270)+'deg)';rv.textContent=rpm.toFixed(1);
-    lights.forEach(function(l,k){l.classList.toggle('on',rpm>4.6+k*.45)});
-    if(p<1)requestAnimationFrame(f);else{$('#shift').classList.add('flash');setTimeout(launch,RM?0:380)}}
-  function startTach(){requestAnimationFrame(f)}
-  startTach();
-  setTimeout(launch,4500);
-})();
-
-/* ---------- humo (canvas) ---------- */
-var cv=$('#smoke'),cx=cv.getContext('2d'),P=[],W=0,H=0,run=!RM,DPR=Math.min(devicePixelRatio||1,1.5),mob=innerWidth<860;
-function rs(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0)}
-rs();addEventListener('resize',rs);
-var puff=document.createElement('canvas');puff.width=puff.height=128;(function(){var c=puff.getContext('2d'),g=c.createRadialGradient(64,64,0,64,64,64);g.addColorStop(0,'rgba(220,220,230,.5)');g.addColorStop(.5,'rgba(190,190,205,.18)');g.addColorStop(1,'rgba(180,180,200,0)');c.fillStyle=g;c.fillRect(0,0,128,128)})();
-function spawn(){var fromR=Math.random()<.6;return{x:fromR?W*(.55+Math.random()*.35):W*(Math.random()*.4),y:H*(.78+Math.random()*.2),r:40+Math.random()*80,vx:(fromR?-1:1)*(.3+Math.random()*1.2),vy:-(.15+Math.random()*.5),g:.4+Math.random()*.7,a:0,life:0,max:260+Math.random()*260,red:Math.random()<.22}}
-var MAXP=mob?26:60;
-function tick(){if(!run){cx.clearRect(0,0,W,H);return}
-  cx.clearRect(0,0,W,H);if(P.length<MAXP&&Math.random()<.5)P.push(spawn());
-  for(var i=P.length-1;i>=0;i--){var p=P[i];p.life++;p.x+=p.vx;p.y+=p.vy;p.vx*=.995;p.r+=p.g;var k=p.life/p.max;p.a=k<.2?k/.2:1-(k-.2)/.8;
-    if(p.life>=p.max){P.splice(i,1);continue}
-    cx.globalAlpha=p.a*(mob?.5:.62);
-    if(p.red){cx.globalCompositeOperation='lighter';cx.globalAlpha*=.35}else cx.globalCompositeOperation='source-over';
-    cx.drawImage(puff,p.x-p.r,p.y-p.r,p.r*2,p.r*2);}
-  cx.globalAlpha=1;cx.globalCompositeOperation='source-over';requestAnimationFrame(tick)}
-if(run)requestAnimationFrame(tick);
-new IntersectionObserver(function(es){var v=es[0].isIntersecting&&!RM;if(v&&!run){run=true;requestAnimationFrame(tick)}else if(!v)run=false},{threshold:0}).observe($('.hero'));
-
-/* streaks */
-(function(){if(RM)return;var s=$('#streaks'),h='';for(var i=0;i<(mob?6:12);i++){h+='<i style="top:'+(8+Math.random()*84)+'%;animation-duration:'+(1.2+Math.random()*2.2)+'s;animation-delay:'+(-Math.random()*3)+'s;opacity:'+(.2+Math.random()*.6)+'"></i>'}s.innerHTML=h})();
-
-/* ---------- tilt + brillo ---------- */
-(function(){var c=$('#tilt');if(!c||RM||!matchMedia('(pointer:fine)').matches)return;var r=c.parentNode;
- r.addEventListener('mousemove',function(e){var b=r.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform='rotateY('+(x*14)+'deg) rotateX('+(-y*12)+'deg)';c.style.setProperty('--gx',(x+.5)*100+'%')});
- r.addEventListener('mouseleave',function(){c.style.transform=''})})();
-
-/* ---------- reveal + contadores ---------- */
-function count(el){var to=+el.dataset.to,dec=+(el.dataset.dec||0),t0=null;function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400),e=1-Math.pow(1-p,3);el.textContent=(to*e).toFixed(dec);if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in');$$('.cnt',e.target).forEach(count);if(e.target.classList.contains('cnt'))count(e.target);io.unobserve(e.target)})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
-$$('[data-rv],.bento button').forEach(function(el){io.observe(el)});
-$$('.score .cnt').forEach(function(el){io.observe(el)});
-/* respaldo por si el observer se retrasa */
-function chk(){$$('[data-rv]:not(.in),.bento button:not(.in),.score .cnt:not(.in)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*.94&&r.bottom>0){el.classList.add('in');$$('.cnt',el).forEach(count);if(el.classList.contains('cnt'))count(el);io.unobserve(el)}})}
-addEventListener('scroll',chk,{passive:true});setTimeout(chk,1600);
-
-/* ---------- nav + fab ---------- */
-var nav=$('#nav'),fab=$('#fab');
-function onS(){var y=scrollY;nav.classList.toggle('solid',y>40);fab.classList.toggle('on',y>innerHeight*.7)}
-addEventListener('scroll',onS,{passive:true});onS();
-
-/* ---------- servicios: scroll móvil ---------- */
-tr.addEventListener('scroll',function(){var m=tr.scrollWidth-tr.clientWidth;if(m>0)hud(tr.scrollLeft/m)},{passive:true});
-
-/* ---------- GSAP: intro + scroll cinematográfico ---------- */
-function intro(){
-  if(!window.gsap||RM)return;
-  gsap.from('#h1 .ln>span',{yPercent:110,skewY:8,duration:1.2,ease:'power4.out',stagger:.12,delay:.35});
-  gsap.from('.hero .kick,.hero .lead,.hero .ctas,.hud>div',{y:30,opacity:0,duration:1,ease:'power3.out',stagger:.08,delay:.75});
-  gsap.fromTo('#herobg',{scale:1.25},{scale:1.04,duration:2.6,ease:'power2.out'});
-}
-if(window.gsap&&window.ScrollTrigger&&!RM){
-  gsap.registerPlugin(ScrollTrigger);
-  if(window.Lenis){var lenis=new Lenis({lerp:.09});window.__lenis=lenis;lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
-    $$('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=$(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:a.getAttribute('href')==='#top'?0:-10,duration:1.4})}})})}
-  gsap.to('#herobg',{yPercent:14,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-  gsap.to('.hero-in',{y:-80,opacity:.15,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-  /* ticker reacciona a la velocidad del scroll */
-  var sk=gsap.quickTo('.ticker .row','skewX',{duration:.4,ease:'power3'});
-  ScrollTrigger.create({onUpdate:function(s){sk(gsap.utils.clamp(-14,14,s.getVelocity()/-180))}});
-  var mm=gsap.matchMedia();
-  mm.add('(min-width: 900px)',function(){
-    var dist=function(){return tr.scrollWidth-innerWidth};
-    var len=[$('#tr1'),$('#tr2')];
-    gsap.to(tr,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:'#servicios',start:'top top',end:function(){return '+='+dist()},pin:true,scrub:.7,invalidateOnRefresh:true,anticipatePin:1,onUpdate:function(s){hud(s.progress)}}});
-    gsap.fromTo('.tire',{xPercent:0},{xPercent:-30,ease:'none',scrollTrigger:{trigger:'#servicios',start:'top top',end:function(){return '+='+dist()},scrub:true}});
-  });
-  gsap.from('.dash',{rotate:-25,scale:.85,ease:'none',scrollTrigger:{trigger:'#check',start:'top bottom',end:'center center',scrub:true}});
-  gsap.fromTo('.ct .h2',{letterSpacing:'.2em'},{letterSpacing:'0em',ease:'none',scrollTrigger:{trigger:'#contacto',start:'top bottom',end:'top 30%',scrub:true}});
-  addEventListener('load',function(){ScrollTrigger.refresh()});
-}
-})();
-</script>
+<script src="/muestras/mktronic/mk.js?v=2"></script>
 </body>
 </html>
